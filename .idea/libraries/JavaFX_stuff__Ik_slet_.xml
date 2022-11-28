@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="JavaFX stuff (Ik slet)">
+    <CLASSES>
+      <root url="file://$USER_HOME$/Desktop/JavaFX stuff (Ik slet)" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/Desktop/JavaFX stuff (Ik slet)/javafx-sdk-19/src/javafx.base" />
+      <root url="file://$USER_HOME$/Desktop/JavaFX stuff (Ik slet)/javafx-sdk-19/src/javafx.controls" />
+      <root url="file://$USER_HOME$/Desktop/JavaFX stuff (Ik slet)/javafx-sdk-19/src/javafx.fxml" />
+      <root url="file://$USER_HOME$/Desktop/JavaFX stuff (Ik slet)/javafx-sdk-19/src/javafx.graphics" />
+      <root url="file://$USER_HOME$/Desktop/JavaFX stuff (Ik slet)/javafx-sdk-19/src/javafx.media" />
+      <root url="file://$USER_HOME$/Desktop/JavaFX stuff (Ik slet)/javafx-sdk-19/src/javafx.swing" />
+      <root url="file://$USER_HOME$/Desktop/JavaFX stuff (Ik slet)/javafx-sdk-19/src/javafx.web" />
+    </SOURCES>
+    <jarDirectory url="file://$USER_HOME$/Desktop/JavaFX stuff (Ik slet)" recursive="false" />
+  </library>
+</component>
