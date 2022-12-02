@@ -53,6 +53,10 @@ public class Hotel {
         services.add(service);
     }
 
+    public ArrayList<Service> getServices() {
+        return services;
+    }
+
     public double getPrice(boolean single) {
         if (single) {
             return singlePrice;

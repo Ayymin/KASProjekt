@@ -65,8 +65,8 @@ public class Controller {
         return hotels;
     }
 
-    public static ArrayList<Udflugt> getUdflugts() {
-        ArrayList<Udflugt> udflugts = Storage.getUdflugts();
+    public static ArrayList<Udflugt> getUdflugter() {
+        ArrayList<Udflugt> udflugts = Storage.getUdflugter();
         return udflugts;
     }
 
@@ -82,6 +82,14 @@ public class Controller {
 
     public static Konference getKonference() {
         return Storage.getKonference();
+    }
+
+    public static ArrayList<Tilmelding> getTilmeldinger() {
+        return Storage.getTilmeldinger();
+    }
+
+    public static void addTilmelding(Tilmelding tilmelding) {
+        Storage.addTilmelding(tilmelding);
     }
 
 }
