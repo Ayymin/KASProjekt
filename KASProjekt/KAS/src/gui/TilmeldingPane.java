@@ -60,6 +60,7 @@ public class TilmeldingPane extends GridPane {
         GridPane.setMargin(tilmeld, new Insets(10, 10, 0, 10));
         tilmeld.setOnAction(event -> System.out.println("test"));
     }
+
     //<---------------------------------------------------------------------------------------------------------------->
     private void setLabels() {
         RadioButton rb = (RadioButton) fHolder.getSelectedToggle();

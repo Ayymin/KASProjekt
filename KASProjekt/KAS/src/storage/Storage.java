@@ -38,9 +38,11 @@ public class Storage {
     public static ArrayList<Deltager> getDeltagers() {
         return deltagers;
     }
+
     public static ArrayList<Ledsager> getLedsagers() {
         return ledsagers;
     }
+
     public static Konference getKonference() {
         return konference;
     }

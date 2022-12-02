@@ -118,6 +118,9 @@ public class Konference {
         return priceADay;
     }
 
+    public String toString() {
+        return getName();
+    }
 
 
 }

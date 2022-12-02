@@ -38,7 +38,7 @@ public class Controller {
             }
         }
 
-        if ( !tilmelding.getDeltager().isSpeaker() ) {
+        if (!tilmelding.getDeltager().isSpeaker()) {
             System.out.println("aefaef");
             totalPrice += tilmelding.getKonference().getPriceADay() * (getTotalDays(tilmelding.getArrivalDate(), tilmelding.getDepatureDate()));
         }
@@ -58,7 +58,7 @@ public class Controller {
         }
         return totalDays;
     }
-    
+
     public static ArrayList<Hotel> getHotels() {
         ArrayList<Hotel> hotels = Storage.getHotels();
 
@@ -79,7 +79,7 @@ public class Controller {
         ArrayList<Ledsager> ledsagers = Storage.getLedsagers();
         return ledsagers;
     }
-    
+
     public static Konference getKonference() {
         return Storage.getKonference();
     }

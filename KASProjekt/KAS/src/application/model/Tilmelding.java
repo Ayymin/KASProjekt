@@ -19,7 +19,6 @@ public class Tilmelding {
     private ArrayList<Service> services = new ArrayList<>();
 
 
-
     public Tilmelding(String arrivalDate, Konference konference, String depatureDate, Deltager deltager) {
         this.arrivalDate = arrivalDate;
         this.deltager = deltager;
@@ -74,7 +73,7 @@ public class Tilmelding {
         this.ledsager = ledsager;
     }
 
-    public void setHotel(Hotel hotel){
+    public void setHotel(Hotel hotel) {
         this.hotel = hotel;
     }
 
@@ -85,6 +84,7 @@ public class Tilmelding {
     public void addService(Service service) {
         services.add(service);
     }
+
     public ArrayList<Service> getServices() {
         return services;
     }
