@@ -90,8 +90,6 @@ public class HotelPane extends GridPane {
         }
     }
 
-
-
     //Booker hotellet.
     //TODO skal give fejlbeskeder
     public void bookHotel() {

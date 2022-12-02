@@ -42,10 +42,6 @@ public class KonferenceWindow extends Stage {
         Label lblName = new Label("Name");
         pane.add(lblName, 0, 0);
 
-
-
     // -------------------------------------------------------------------------
-
-
     }
 }
