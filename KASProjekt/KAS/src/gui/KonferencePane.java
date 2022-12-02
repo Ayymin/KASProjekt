@@ -6,6 +6,7 @@ import application.model.Konference;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -17,6 +18,8 @@ public class KonferencePane extends GridPane {
 
 
         private TextArea txaEmps;
+
+        private ListView<Konference> lvwKonferencer;
 
         public KonferencePane() {
             this.setPadding(new Insets(20));
