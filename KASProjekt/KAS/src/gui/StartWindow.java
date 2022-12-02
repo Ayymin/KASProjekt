@@ -62,5 +62,8 @@ public class StartWindow extends Application {
             Tab tabTilføjLedsager = new Tab("Tilmeld Udflugt");
             tabPane.getTabs().add(tabTilføjLedsager);
 
+            UdflugtPane ledsagerPane = new UdflugtPane();
+            tabTilføjLedsager.setContent(ledsagerPane);
+
         }
 }
