@@ -130,7 +130,7 @@ public class AdministrationWindow4 extends Stage {
     private void okAction() {
         String name = txfUdflugt.getText().trim();
         String dato = txfDato.getText().trim();
-        int pris = -1;
+        double pris = -1;
 
         if (name.length() == 0) {
             lblError.setText("Indtast udflugtnavn");
@@ -139,7 +139,7 @@ public class AdministrationWindow4 extends Stage {
                 lblError.setText("Indtast dato");
             } else {
                 try {
-                    pris = Integer.parseInt(txfPris.getText().trim());
+                    pris = Double.parseDouble(txfPris.getText().trim());
                 } catch (NumberFormatException ex) {
                 }
                 if (pris < 0) {

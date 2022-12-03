@@ -126,15 +126,15 @@ public class AdministrationWindow3 extends Stage {
 
     private void okAction() {
         String name = txfName.getText().trim();
-        int singlepris = -1;
-        int doublepris = -1;
+        double singlepris = -1;
+        double doublepris = -1;
 
         if (name.length() == 0) {
             lblError.setText("Indtast hotelnavn");
         } else {
 
             try {
-                singlepris = Integer.parseInt(txfSingle.getText().trim());
+                singlepris = Double.parseDouble(txfSingle.getText().trim());
             } catch (NumberFormatException ex) {
             }
             if (singlepris < 0) {
@@ -142,7 +142,7 @@ public class AdministrationWindow3 extends Stage {
             } else {
 
                 try {
-                    doublepris = Integer.parseInt(txfDouble.getText().trim());
+                    doublepris = Double.parseDouble(txfDouble.getText().trim());
                 } catch (NumberFormatException ex) {
                 }
                 if (doublepris < 0) {
