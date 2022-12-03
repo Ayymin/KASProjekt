@@ -143,7 +143,7 @@ public class UdflugtPane extends GridPane {
             Optional<ButtonType> result = alert.showAndWait();
 
             if((result.isPresent()) && (result.get() == ButtonType.OK)){
-                Controller.deleteUdlugt(udflugt);
+                Controller.deleteUdflugt(udflugt);
                 lvwUdflugter.getItems().setAll(Controller.getUdflugter());
                 this.updateControls();
             }
