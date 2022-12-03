@@ -26,11 +26,8 @@ public class Tilmelding {
         this.deltager = deltager;
         this.depatureDate = depatureDate;
         this.konference = konference;
+
     }
-
-
-
-
 
     public double getTotalPrice() {
         return Controller.getTotalPrice(this);
