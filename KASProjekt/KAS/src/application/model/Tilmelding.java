@@ -27,6 +27,7 @@ public class Tilmelding {
         this.depatureDate = depatureDate;
         this.konference = konference;
 
+
     }
 
     public double getTotalPrice() {
