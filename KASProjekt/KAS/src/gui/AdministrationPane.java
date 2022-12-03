@@ -208,9 +208,9 @@ public class AdministrationPane extends GridPane {
         Konference konference = this.konference.getSelectionModel().getSelectedItem();
         if (konference != null) {
             txfName.setText(konference.getName());
-            txfStartDato.setText(konference.getStartDato());
-            txfSlutDato.setText(konference.getSlutDato());
-            txfSted.setText(konference.getSted());
+            txfStartDato.setText(konference.getDate());
+            txfSlutDato.setText(konference.getEndDate());
+            txfSted.setText(konference.getTopic());
 			/*StringBuilder sb = new StringBuilder();
 			for (Hotel h : konference.getHotel()) {
 				sb.append(h + "\n");
