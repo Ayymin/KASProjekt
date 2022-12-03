@@ -16,6 +16,7 @@ public class Storage {
 
     private static ArrayList<Ledsager> ledsagers = new ArrayList<>();
     private static Konference konference;
+    private static ArrayList<Konference> konferencer = new ArrayList<>();
 
 
     public static void initContent() {
@@ -117,10 +118,10 @@ public class Storage {
         tilmeldinger.add(tilmelding);
     }
     public static void removeKonference(Konference konference) {
-        konference.remove(konference);
+        Storage.konferencer.remove(konference);
     }
     public static void addKonference(Konference konference) {
-        Storage.konference.add(konference);
+        Storage.konferencer.add(konference);
     }
 
     public static void addUdflugt(Udflugt udflugt) {
