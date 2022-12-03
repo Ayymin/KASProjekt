@@ -68,21 +68,14 @@ public class Udflugt {
         this.price = price;
     }
 
-    public Tilmelding getTilmelding(){
-        return tilmelding;
+    public ArrayList<Tilmelding> getTilmelidnger(){
+        return tilmelidnger;
     }
 
-    public void setTilmelidnger(Tilmelding tilmelding){
-        if(this.tilmelding != tilmelding){
-            Tilmelding oldTilmeling = this.tilmelding;
-            if(oldTilmeling != null){
-                oldTilmeling.removeUdflugt(this);
-            }
-            this.tilmelding = tilmelding;
-            if(tilmelding != null)
-                tilmelding.addUdlugt(this);
-        }
+    public void setTilmelidnger(ArrayList<Tilmelding> tilmelidnger){
+        this.tilmelidnger = tilmelidnger;
     }
+
 
 
 
