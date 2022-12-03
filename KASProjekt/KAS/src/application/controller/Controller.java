@@ -103,10 +103,10 @@ public class Controller {
         Storage.removeKonference(konference);
     }
 
-    public static Konference createKonference(String name, String endDate, String adress, String topic, String description, String date, double priceADay) {
+    public static void createKonference(String name, String endDate, String adress, String topic, String description, String date, double priceADay) {
         Konference konference = new Konference(name, endDate, adress, topic, description, date, priceADay);
         Storage.addKonference(konference);
-        return konference;
+
     }
 
     public static void addHotelToKonference(Hotel hotel, Konference konference) {
@@ -132,6 +132,10 @@ public class Controller {
         Udflugt udflugt = new Udflugt(name, date, adress, description, price);
         Storage.addUdflugt(udflugt);
         return udflugt;
+    }
+
+    public static ArrayList<Konference> getKonferencer() {
+        return Storage.getKonferencer();
     }
 
 

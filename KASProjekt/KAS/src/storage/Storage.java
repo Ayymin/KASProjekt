@@ -131,4 +131,9 @@ public class Storage {
     public static void removeUdflugt(Udflugt udflugt) {
         udflugter.remove(udflugt);
     }
+
+    public static ArrayList<Konference> getKonferencer() {
+        return new ArrayList<Konference>(konferencer);
+    }
+
 }
