@@ -207,10 +207,10 @@ public class AdministrationPane extends GridPane {
     public void updateControls() {
         Konference konference = this.konference.getSelectionModel().getSelectedItem();
         if (konference != null) {
-            txfName.setText(konference.getName());
+            txfName.setText(konference.getTopic());
             txfStartDato.setText(konference.getDate());
             txfSlutDato.setText(konference.getEndDate());
-            txfSted.setText(konference.getTopic());
+            txfSted.setText(konference.getAdress());
 			/*StringBuilder sb = new StringBuilder();
 			for (Hotel h : konference.getHotel()) {
 				sb.append(h + "\n");

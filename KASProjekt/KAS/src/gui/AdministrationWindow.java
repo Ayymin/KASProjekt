@@ -96,10 +96,10 @@ public class AdministrationWindow extends Stage {
 
         private void initControls() {
             if (konference != null) {
-                txfName.setText(konference.getName());
+                txfName.setText(konference.getTopic());
                 txfStartDato.setText(konference.getDate());
                 txfSlutDato.setText(konference.getEndDate());
-                txfSted.setText(konference.getTopic());
+                txfSted.setText(konference.getAdress());
             } else {
                 txfName.clear();
                 txfStartDato.clear();
