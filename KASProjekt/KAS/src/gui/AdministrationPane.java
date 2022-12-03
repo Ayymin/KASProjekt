@@ -158,7 +158,7 @@ public class AdministrationPane extends GridPane {
         AdministrationWindow aw = new AdministrationWindow("Opret konference");
         aw.showAndWait();
 
-        konference.getItems().setAll(Controller.getKonference());
+        konference.getItems().setAll(Controller.getKonferencer());
         int index = konference.getItems().size() - 1;
         konference.getSelectionModel().select(index);
     }
@@ -171,7 +171,7 @@ public class AdministrationPane extends GridPane {
             aw2.showAndWait();
 
             int selectIndex = this.konference.getSelectionModel().getSelectedIndex();
-            this.konference.getItems().setAll(Controller.getKonference());
+            this.konference.getItems().setAll(Controller.getKonferencer());
             this.konference.getSelectionModel().select(selectIndex);
         }
     }
@@ -186,7 +186,7 @@ public class AdministrationPane extends GridPane {
             Optional<ButtonType> result = alert.showAndWait();
             if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
                 Controller.deleteKonference(konference);
-                this.konference.getItems().setAll(Controller.getKonference());
+                this.konference.getItems().setAll(Controller.getKonferencer());
                 this.updateControls();
             }
         }
@@ -207,7 +207,7 @@ public class AdministrationPane extends GridPane {
     public void updateControls() {
         Konference konference = this.konference.getSelectionModel().getSelectedItem();
         if (konference != null) {
-            txfName.setText(konference.getTopic());
+            txfName.setText(konference.getName());
             txfStartDato.setText(konference.getDate());
             txfSlutDato.setText(konference.getEndDate());
             txfSted.setText(konference.getAdress());
