@@ -116,6 +116,9 @@ public class Storage {
     public static void addTilmelding(Tilmelding tilmelding) {
         tilmeldinger.add(tilmelding);
     }
+    public static void removeKonference(Konference konference) {
+        Storage.konference.remove(konference);
+    }
 
     public static void addUdflugt(Udflugt udflugt) {
         udflugter.add(udflugt);

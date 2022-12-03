@@ -65,5 +65,12 @@ public class StartWindow extends Application {
             UdflugtPane ledsagerPane = new UdflugtPane();
             tabTilføjLedsager.setContent(ledsagerPane);
 
+            Tab tabAdministration = new Tab("Administration");
+            tabPane.getTabs().add(tabAdministration);
+
+            AdministrationPane ap = new AdministrationPane();
+            tabAdministration.setContent(ap);
+
+
         }
 }
