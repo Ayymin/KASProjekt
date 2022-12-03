@@ -77,6 +77,10 @@ public class Udflugt {
     }
 
 
+    public Tilmelding getTilmelding() {
+        return tilmelding;
+    }
+
 
 
 }
