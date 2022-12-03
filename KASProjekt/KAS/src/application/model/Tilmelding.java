@@ -29,10 +29,6 @@ public class Tilmelding {
     }
 
 
-    public double calcTotalPrice() {
-        double totalPrice = 0;
-        return totalPrice;
-    }
 
 
 
