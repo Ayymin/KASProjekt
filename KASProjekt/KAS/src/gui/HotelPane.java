@@ -125,7 +125,7 @@ public class HotelPane extends GridPane {
                                 aTilmelding.setHotel((Hotel) chbHotelsData.get(i).getUserData());
 
                                 HBox services = (HBox) chbHotels.get(i).getUserData();
-                                for (Node aService: services.getChildren()) {
+                                for (Node aService : services.getChildren()) {
                                     RadioButton rbService = (RadioButton) aService;
                                     if (rbService.isSelected()) {
                                         aTilmelding.addService((Service) aService.getUserData());
