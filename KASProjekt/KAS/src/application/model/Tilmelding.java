@@ -35,6 +35,7 @@ public class Tilmelding {
     }
 
 
+
     public double getTotalPrice() {
         return Controller.getTotalPrice(this);
     }
