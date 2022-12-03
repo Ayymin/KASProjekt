@@ -117,7 +117,10 @@ public class Storage {
         tilmeldinger.add(tilmelding);
     }
     public static void removeKonference(Konference konference) {
-        Storage.konference.remove(konference);
+        konference.remove(konference);
+    }
+    public static void addKonference(Konference konference) {
+        Storage.konference.add(konference);
     }
 
     public static void addUdflugt(Udflugt udflugt) {

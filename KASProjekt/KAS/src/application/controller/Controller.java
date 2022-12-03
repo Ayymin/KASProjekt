@@ -92,6 +92,48 @@ public class Controller {
         Storage.addTilmelding(tilmelding);
     }
 
-}
+    public static void updateKonference(Konference konference, String name, String startDato, String slutDato, String sted) {
+        konference.setName(name);
+        konference.setDate(startDato);
+        konference.setEndDate(slutDato);
+        konference.setTopic(sted);
+    }
 
+    public static void deleteKonference(Konference konference) {
+        Storage.removeKonference(konference);
+    }
+
+    public static Konference createKonference(String name, String endDate, String adress, String topic, String description, String date, double priceADay) {
+        Konference konference = new Konference(name, endDate, adress, topic, description, date, priceADay);
+        Storage.addKonference(konference);
+        return konference;
+    }
+
+    public static void addHotelToKonference(Hotel hotel, Konference konference) {
+        konference.addHotel(hotel);
+    }
+
+    public static Hotel createHotel(String name, int singlepris, int doublepris) {
+        Hotel hotel = new Hotel(name, singlepris, doublepris);
+        Storage.addHotel(hotel);
+        return hotel;
+    }
+    public static Hotel createHotel(String name, int singlepris, Konference konference, int doublepris) {
+        Hotel hotel = createHotel(name, singlepris, doublepris);
+        konference.addHotel(hotel);
+        return hotel;
+    }
+
+    public static void addUdflugtToKonference(Udflugt udflugt, Konference konference) {
+        konference.addUdflugt(udflugt);
+    }
+
+    public static Udflugt createUdflugt(Konference konference, String name, String date, String adress, String description, int price) {
+        Udflugt udflugt = new Udflugt(name, date, adress, description, price);
+        Storage.addUdflugt(udflugt);
+        return udflugt;
+    }
+
+
+}
 

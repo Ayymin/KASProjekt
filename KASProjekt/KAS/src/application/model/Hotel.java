@@ -10,6 +10,7 @@ public class Hotel {
     private double singlePrice;
     private ArrayList<String> tilmeldinger = new ArrayList<>();
     private ArrayList<Service> services = new ArrayList<>();
+    private Konference konference;
 
     public Hotel(String name, double doublePrice, double singlePrice) {
         this.name = name;
@@ -62,6 +63,10 @@ public class Hotel {
             return singlePrice;
         }
         return doubelPrice;
+    }
+
+    public Konference getKonference() {
+        return konference;
     }
 
 
