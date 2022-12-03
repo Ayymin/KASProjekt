@@ -156,17 +156,17 @@ public class UdflugtWindow extends Stage {
 
             }
             if (udflugt != null) {
-                Controller.updateUdflugt(udflugt, name, dato, adress, description, price);
+              //  Controller.updateUdflugt(udflugt, name, dato, adress, description, price);
 
             } else {
-                if (price > 0)
-                    Controller.createUdflugt(name, adress, dato, price, description);
+                if (price > 0) {
+                 //   Controller.createUdflugt(name, adress, dato, price, description);
             }
 
         }
         hide();
     }
-}
+}}
 
 
 /*
