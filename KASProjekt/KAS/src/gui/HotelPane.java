@@ -110,12 +110,12 @@ public class HotelPane extends GridPane {
                     //Tjekker om en tilmelding indeholder en deltager med det indtastede navn
                     if (aTilmelding.getDeltager().getName().equalsIgnoreCase(input)) {
                         //Tjekker hvilket hotel er booket og sætter tilmeldingen til det hotel
-                        for (var aHotelCB : chbHotels) {
+                        for (CheckBox aHotelCB : chbHotels) {
                             if (aHotelCB.isSelected()) {
                                 System.out.println("Hotel tilføjet");
-                                System.out.println(aHotelCB.getUserData());
+                                System.out.println(aHotelCB);
 
-                                //aTilmelding.setHotel((Hotel) aHotelCB.);
+                                aTilmelding.setHotel((Hotel) aHotelCB.getUserData());
                                 //aTil
 
                             }
