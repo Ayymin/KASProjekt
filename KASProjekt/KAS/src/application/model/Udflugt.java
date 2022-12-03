@@ -9,7 +9,6 @@ public class Udflugt {
     private String date;
     private String description;
     private int price;
-    private Konference konference;
 
 
     private ArrayList<Tilmelding> tilmelidnger;
@@ -77,10 +76,11 @@ public class Udflugt {
         this.tilmelidnger = tilmelidnger;
     }
 
-    public Konference getKonference() {
-        return konference;
-    }
+
     public Tilmelding getTilmelding() {
         return tilmelding;
     }
+
+
+
 }

@@ -30,6 +30,7 @@ public class HotelPane extends GridPane {
         this.setPadding(new Insets(20));
         this.setHgap(20);
         this.setVgap(10);
+        this.setGridLinesVisible(true);
 
 
         Label lblOvernat = new Label("Overnatningsønsker");
@@ -111,7 +112,6 @@ public class HotelPane extends GridPane {
         // wait for the modal dialog to close
 
         String input = "";
-        boolean nameFound = false;
         if (result.isPresent()) {
             input = result.get();
             if (input.length() > 0) {
@@ -119,30 +119,25 @@ public class HotelPane extends GridPane {
                 for (Tilmelding aTilmelding : Controller.getTilmeldinger()) {
                     //Tjekker om en tilmelding indeholder en deltager med det indtastede navn
                     if (aTilmelding.getDeltager().getName().equalsIgnoreCase(input)) {
-                        nameFound = true;
                         //Tjekker hvilket hotel er booket og sætter tilmeldingen til det hotel
                         for (int i = 0; i < chbHotels.size(); i++) {
                             if (chbHotels.get(i).isSelected()) {
                                 aTilmelding.setHotel((Hotel) chbHotelsData.get(i).getUserData());
 
                                 HBox services = (HBox) chbHotels.get(i).getUserData();
-                                for (Node aService: services.getChildren()) {
+                                for (Node aService : services.getChildren()) {
                                     RadioButton rbService = (RadioButton) aService;
                                     if (rbService.isSelected()) {
                                         aTilmelding.addService((Service) aService.getUserData());
+                                        System.out.println("aef");
                                     }
                                 }
+
+                                System.out.println(aTilmelding.getHotel().getName());
+                                System.out.println(aTilmelding.getServices());
                             }
                         }
                     }
-                }
-
-                if (!nameFound) {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Book hotel");
-                    alert.setHeaderText("Forkert navn");
-                    alert.setContentText("Skriv navnet på personen i tilmeldingen");
-                    alert.show();
                 }
             }
         }
