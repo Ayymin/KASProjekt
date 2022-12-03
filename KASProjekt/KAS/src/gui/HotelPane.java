@@ -2,9 +2,11 @@ package gui;
 
 import application.controller.Controller;
 import application.model.Hotel;
+import application.model.Service;
 import application.model.Tilmelding;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Dialog;
@@ -12,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -19,6 +22,9 @@ import java.util.Optional;
 public class HotelPane extends GridPane {
     private final CheckboxGroup cbHotelGroup = new CheckboxGroup();
     private ArrayList<CheckBox> chbHotels = new ArrayList<>();
+    private ArrayList<CheckBox> chbHotelsData = new ArrayList<>();
+
+
 
     public HotelPane() {
         this.setPadding(new Insets(20));
@@ -28,7 +34,6 @@ public class HotelPane extends GridPane {
 
         Label lblOvernat = new Label("Overnatningsønsker");
         add(lblOvernat, 0, 0);
-
 
         Label lblHotel = new Label("Hoteller");
         Label lblprice = new Label("Priser: Dobbelt/enkelt");
@@ -49,11 +54,14 @@ public class HotelPane extends GridPane {
         for (Hotel aHotel : Controller.getHotels()) {
 
             CheckBox cbHotel = new CheckBox();
-            cbHotel.setOnAction(event -> onHotelSelected(event));
-            cbHotel.setUserData(aHotel);
 
-            //cbHotelGroup
+            CheckBox copyCBHotel = new CheckBox();
+            copyCBHotel.setUserData(aHotel);
+            chbHotelsData.add(copyCBHotel);
             chbHotels.add(cbHotel);
+
+            cbHotel.setOnAction(event -> onHotelSelected(event));
+
             Label lblHotelNavn = new Label(aHotel.getName());
             Label lblHotelPris = new Label(aHotel.getDoubelPrice() + "/" + aHotel.getSinglePrice());
             this.add(lblHotelNavn, 0, 2 + pos);
@@ -65,7 +73,6 @@ public class HotelPane extends GridPane {
 
             HBox hbService = new HBox(10);
             this.add(hbService, 3, 2 + pos);
-            System.out.println(aHotel.getServices().size());
             for (int j = 0; j < aHotel.getServices().size(); j++) {
                 RadioButton rb = new RadioButton(aHotel.getServices().get(j).getName());                                                      //Creates service Radiobuttons and disables them
                 rb.setDisable(true);
@@ -80,18 +87,21 @@ public class HotelPane extends GridPane {
 
     private void onHotelSelected(ActionEvent event) {                                                    //Method that enables the radio buttons
         CheckBox source = (CheckBox) event.getSource();                                                  //once the Checkboxes are enabled, and disables
-        HBox radio = (HBox) source.getUserData();                                                        //if the checkboxes are disabled.
-        for (var r : radio.getChildren()) {
+        HBox radio = (HBox) source.getUserData();//if the checkboxes are disabled.
+        for (Node r : radio.getChildren()) {
             if (source.isSelected()) {
                 r.setDisable(false);
-            } else
+            } else {
                 r.setDisable(true);
+            }
         }
     }
 
     //Booker hotellet.
     //TODO skal give fejlbeskeder
     public void bookHotel() {
+
+
         Dialog<String> dialog = new TextInputDialog();
         dialog.setTitle("Indtast dit navn");
         dialog.setHeaderText("Indtast dit navn for at booke hotellet");
@@ -109,14 +119,21 @@ public class HotelPane extends GridPane {
                     //Tjekker om en tilmelding indeholder en deltager med det indtastede navn
                     if (aTilmelding.getDeltager().getName().equalsIgnoreCase(input)) {
                         //Tjekker hvilket hotel er booket og sætter tilmeldingen til det hotel
-                        for (CheckBox aHotelCB : chbHotels) {
-                            if (aHotelCB.isSelected()) {
-                                System.out.println("Hotel tilføjet");
-                                System.out.println(aHotelCB);
+                        for (int i = 0; i < chbHotels.size(); i++) {
+                            if (chbHotels.get(i).isSelected()) {
+                                aTilmelding.setHotel((Hotel) chbHotelsData.get(i).getUserData());
 
-                                aTilmelding.setHotel((Hotel) aHotelCB.getUserData());
-                                //aTil
+                                HBox services = (HBox) chbHotels.get(i).getUserData();
+                                for (Node aService: services.getChildren()) {
+                                    RadioButton rbService = (RadioButton) aService;
+                                    if (rbService.isSelected()) {
+                                        aTilmelding.addService((Service) aService.getUserData());
+                                        System.out.println("aef");
+                                    }
+                                }
 
+                                System.out.println(aTilmelding.getHotel().getName());
+                                System.out.println(aTilmelding.getServices());
                             }
                         }
                     }
