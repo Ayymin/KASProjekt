@@ -8,12 +8,5 @@ public class App {
         Storage.initContent();
         Application.launch(StartWindow.class);
 
-        //SUUUUU
-        //aefgaef
-        //aefaefaeg
-        //hej
-        //x
-        //s
-
     }
 }

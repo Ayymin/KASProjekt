@@ -57,7 +57,7 @@ public class Storage {
         Tilmelding peterSommerTilmelding = new Tilmelding("18-05-2022", konference, "20-05-2022", peterSommer);
         peterSommerTilmelding.setLedsager(mieSommer);
         peterSommerTilmelding.setHotel(denHvideSvane);
-        peterSommerTilmelding.addService(denHvideSvaneWifi);
+        //peterSommerTilmelding.addService(denHvideSvaneWifi);
 
         mieSommer.addUdflugt(trapholdtMuseumKolding);
         mieSommer.addUdflugt(egeskov);
@@ -121,7 +121,7 @@ public class Storage {
         Storage.konferencer.remove(konference);
     }
     public static void addKonference(Konference konference) {
-        Storage.konferencer.add(konference);
+        konferencer.add(konference);
     }
 
     public static void addUdflugt(Udflugt udflugt) {

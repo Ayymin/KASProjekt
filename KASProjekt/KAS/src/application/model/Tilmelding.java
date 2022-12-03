@@ -1,5 +1,7 @@
 package application.model;
 
+import application.controller.Controller;
+
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -24,17 +26,11 @@ public class Tilmelding {
         this.deltager = deltager;
         this.depatureDate = depatureDate;
         this.konference = konference;
+
     }
-
-
-    public double calcTotalPrice() {
-        double totalPrice = 0;
-        return totalPrice;
-    }
-
 
     public double getTotalPrice() {
-        return totalPrice;
+        return Controller.getTotalPrice(this);
     }
 
     public void setTotalPrice(double totalPrice) {

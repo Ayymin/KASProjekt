@@ -40,10 +40,10 @@ public class UdflugtWindow extends Stage {
         this.udflugt = udflugt;
         setTitle(title);
         GridPane pane = new GridPane();
-        initContent(pane);
+        this.initContent(pane);
 
         Scene scene = new Scene(pane);
-        setScene(scene);
+        this.setScene(scene);
 
     }
 

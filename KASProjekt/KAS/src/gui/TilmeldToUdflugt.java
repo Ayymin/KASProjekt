@@ -23,6 +23,7 @@ public class TilmeldToUdflugt extends Stage {
 
     private Ledsager ledsager;
 
+
     private TextField txfName, txfAdress, txfNr, txfCountry;
 
 
@@ -136,6 +137,10 @@ public class TilmeldToUdflugt extends Stage {
             a.setContentText("Tak for din tilmeldning");
             a.showAndWait();
         }
+
+
+
+
 
     }
 
