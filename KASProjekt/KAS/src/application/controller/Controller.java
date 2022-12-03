@@ -92,6 +92,34 @@ public class Controller {
         Storage.addTilmelding(tilmelding);
     }
 
+    public static void updateUdflugt(Udflugt udflugter, String name, String date, String adress, String description, int price){
+        udflugter.setName(name);
+        udflugter.setDate(date);
+        udflugter.setAdress(adress);
+        udflugter.setDescription(description);
+        udflugter.setPrice(price);
+    }
+
+    public static Udflugt createUdflugt(String name, String adress, String date, int price, String description) {
+        Udflugt udflugt = new Udflugt(name, adress, date, description, price);
+        Storage.addUdflugt(udflugt);
+        return udflugt;
+    }
+
+    public static Udflugt createUdflugt(String name, String adress, String date, int price, String description, Tilmelding tilmelding){
+        Udflugt udflugt = createUdflugt(name, adress, date, price, description);
+        tilmelding.addUdlugt(udflugt);
+        return udflugt;
+    }
+
+    public static void deleteUdlugt(Udflugt udflugt) {
+        Tilmelding tilmelding = udflugt.getTilmelding();
+        if(tilmelding != null){
+            tilmelding.removeUdflugt(udflugt);
+        }
+        Storage.removeUdflugt(udflugt);
+    }
 }
+
 
 

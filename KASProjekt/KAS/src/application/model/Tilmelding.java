@@ -93,4 +93,9 @@ public class Tilmelding {
         return konference;
     }
 
+    public void removeUdflugt(Udflugt udflugt) {
+    }
+
+    public void addUdlugt(Udflugt udflugt) {
+    }
 }

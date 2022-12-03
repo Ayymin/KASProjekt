@@ -27,9 +27,9 @@ public class Storage {
         Hotel hoetelPhoenix = new Hotel("Hotel Phønix", 800, 700);
         Hotel pensionTusindfryd = new Hotel("Pension Tusindfryd", 600, 500);
 
-        Udflugt byrundtur = new Udflugt("Byrundtur", "18-05-2022", "Odense Universitet", "Vi skal se på de forskellige serværdigheder i odense", 125);
-        Udflugt egeskov = new Udflugt("Egeskov", "19-05-2022", "Odense", "Vi skal ud og se på Egetræer", 75);
-        Udflugt trapholdtMuseumKolding = new Udflugt("Trapholt Museum Kolding", "20-05-2022", "Æblehaven 23, Kolding", "Vi skal se på modern kunst", 200);
+        Udflugt byrundtur = new Udflugt("Byrundtur", "18-05-2022", "Odense Universitet", "Serværdigheder i odense", 125);
+        Udflugt egeskov = new Udflugt("Egeskov", "19-05-2022", "Odense", "Egetræer", 75);
+        Udflugt trapholdtMuseumKolding = new Udflugt("Trapholt Museum Kolding", "20-05-2022", "Æblehaven 23, Kolding", "Moderne kunst", 200);
 
         Deltager peterSommer = new Deltager("Peter Sommer", "Klosterbakken 7D", 81912019, "Aarhus", "Denmark", false, "NPC", 92301020);
         Deltager finnMadsen = new Deltager("Finn Madsen", "Klosterbakken 5A", 56713455, "Denmark", "Denmark", false, "NPS", 76298800);
@@ -117,4 +117,11 @@ public class Storage {
         tilmeldinger.add(tilmelding);
     }
 
+    public static void addUdflugt(Udflugt udflugt) {
+        udflugter.add(udflugt);
+    }
+
+    public static void removeUdflugt(Udflugt udflugt) {
+        udflugter.remove(udflugt);
+    }
 }
