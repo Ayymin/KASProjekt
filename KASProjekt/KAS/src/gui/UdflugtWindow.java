@@ -1,6 +1,8 @@
 package gui;
 
+
 import application.model.Ledsager;
+//import application.model.Number;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -10,16 +12,8 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import application.model.Udflugt;
 import javafx.scene.Scene;
-import javafx.beans.value.ChangeListener;
 import javafx.geometry.HPos;
-import javafx.geometry.Insets;
-import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 
 import java.awt.*;
@@ -106,15 +100,50 @@ public class UdflugtWindow extends Stage {
 
     private void okAction() {
 
-        Alert a = new Alert(Alert.AlertType.INFORMATION);
+        String name = txfName.getText();
+        String adress = txfAdress.getText();
+        String city = txfCity.getText();
+        String country = txfCountry.getText();
 
-        a.setTitle("Tilmelding");
-        a.setHeaderText("Du er nu tilmeldt");
-        a.setContentText("");
 
+      //  int telefonnr = Number.isANumber(txfTelefonnr.getText()) ? Integer.parseInt(txfTelefonnr.getText()): -1 ;
+
+        if(name.isEmpty()) {
+            alertFejl("navn");
+            txfTelefonnr.getText();
+
+        } else if(adress.isEmpty()){
+            alertFejl("Adresse");
+
+       // } else if(telefonnr < 0) {
+            alertFejl("TelefonNr");
+
+        } else if(city.isEmpty()) {
+            alertFejl("City");
+
+        } else if (country.isEmpty()){
+            alertFejl("Country");
+
+        } else {
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setTitle("Tilmelding");
+            a.setHeaderText("Du er nu tilmeldt");
+            a.setContentText("Tak for din tilmelding!");
+            a.showAndWait();
+
+
+
+        }
+
+    }
+
+    private void alertFejl(String str) {
+        Alert a = new Alert(Alert.AlertType.WARNING);
+
+        a.setTitle("Fejl");
+        a.setHeaderText("Fejl i et felt");
+        a.setContentText("Indtast " + str);
         a.showAndWait();
-
-
     }
 
 
@@ -134,3 +163,13 @@ public class UdflugtWindow extends Stage {
 
 
 }
+
+
+
+
+
+
+
+
+
+

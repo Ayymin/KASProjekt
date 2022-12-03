@@ -27,6 +27,9 @@ public class KonferencePane extends GridPane {
             this.setVgap(10);
             this.setGridLinesVisible(true);
 
+            Label lblComp = new Label("Konference");
+            this.add(lblComp, 0, 0);
+
             txfName = new TextField();
             this.add(txfName,3,1);
 
@@ -41,11 +44,6 @@ public class KonferencePane extends GridPane {
 
             txfDesc = new TextField();
             this.add(txfDesc,3,3,2,4);
-
-            Label lblComp = new Label("Konference");
-            this.add(lblComp, 0, 0);
-
-
 
             lvwKonferencer = new ListView<>();
             this.add(lvwKonferencer,0,1,1,3);
