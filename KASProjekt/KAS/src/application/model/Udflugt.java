@@ -1,7 +1,5 @@
 package application.model;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class Udflugt {
@@ -13,9 +11,9 @@ public class Udflugt {
     private int price;
 
 
-
     private ArrayList<Tilmelding> tilmelidnger;
 
+    private Tilmelding tilmelding;
 
     public Udflugt(String name, String date, String adress, String description, int price) {
         this.name = name;
@@ -23,6 +21,10 @@ public class Udflugt {
         this.adress = adress;
         this.description = description;
         this.price = price;
+    }
+
+    public String toString() {
+        return name;
     }
 
     public String getAdress() {
@@ -66,13 +68,14 @@ public class Udflugt {
         this.price = price;
     }
 
-    public ArrayList<Tilmelding> getTilmelidnger() {
+    public ArrayList<Tilmelding> getTilmelidnger(){
         return tilmelidnger;
     }
 
-    public void setTilmelidnger(ArrayList<Tilmelding> tilmelidnger) {
+    public void setTilmelidnger(ArrayList<Tilmelding> tilmelidnger){
         this.tilmelidnger = tilmelidnger;
     }
+
 
 
 

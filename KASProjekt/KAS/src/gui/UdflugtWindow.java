@@ -1,8 +1,10 @@
 package gui;
 
 
+import application.controller.Controller;
 import application.model.Ledsager;
 //import application.model.Number;
+import application.model.Udflugt;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -24,12 +26,18 @@ public class UdflugtWindow extends Stage {
 
     private Ledsager ledsager;
 
-    public UdflugtWindow(String title, Ledsager ledsager) {
+    private UdflugtPane udflugtPane;
+
+    private Udflugt udflugt;
+
+    private ListView<Udflugt> lvwUdflugter = new ListView<>();
+
+    public UdflugtWindow(String title, Udflugt udflugt) {
         initStyle(StageStyle.UTILITY);
         initModality(Modality.APPLICATION_MODAL);
         setResizable(false);
 
-        this.ledsager = ledsager;
+        this.udflugt = udflugt;
         setTitle(title);
         GridPane pane = new GridPane();
         initContent(pane);
@@ -43,7 +51,7 @@ public class UdflugtWindow extends Stage {
         this(title, null);
     }
 
-    private TextField txfName, txfAdress, txfTelefonnr, txfCity, txfCountry;
+    private TextField txfName, txfAdress, txfPrice, txfDescription, txfDato;
 
     private Label lblError;
 
@@ -61,34 +69,39 @@ public class UdflugtWindow extends Stage {
         pane.add(txfName, 2, 1);
         txfName.setPrefWidth(200);
 
+        Label lblPrice = new Label("Price");
+        pane.add(lblPrice, 1, 2);
+
+        txfPrice = new TextField();
+        pane.add(txfPrice, 2, 2);
+
+        Label lblDato = new Label("Dato");
+        pane.add(lblDato, 1, 3);
+
+        txfDato = new TextField();
+        pane.add(txfDato, 2, 3);
+
         Label lblAdress = new Label("Adress");
-        pane.add(lblAdress, 1, 5);
+        pane.add(lblAdress, 1, 4);
 
         txfAdress = new TextField();
-        pane.add(txfAdress, 2, 5);
+        pane.add(txfAdress, 2, 4);
 
-        Label lblTelefonnr = new Label("TelefonNr");
-        pane.add(lblTelefonnr,1,4);
+        Label lblDescription = new Label("Description");
+        pane.add(lblDescription, 1, 5);
 
-        txfTelefonnr = new TextField();
-        pane.add(txfTelefonnr, 2,4);
-
-        Label lblCity = new Label("City");
-        pane.add(lblCity, 1,3);
-
-        txfCity = new TextField();
-        pane.add(txfCity,2,3);
-
-        Label lblCountry = new Label("Country");
-        pane.add(lblCountry,1,2);
-
-        txfCountry = new TextField();
-        pane.add(txfCountry,2,2);
+        txfDescription = new TextField();
+        pane.add(txfDescription, 2, 5);
 
         Button btnOK = new Button("OK");
         pane.add(btnOK, 2, 6);
         GridPane.setHalignment(btnOK, HPos.RIGHT);
         btnOK.setOnAction(event -> okAction());
+
+        Button btnCancel = new Button("Cancel");
+        pane.add(btnCancel, 1, 6);
+        GridPane.setHalignment(btnCancel, HPos.RIGHT);
+        btnCancel.setOnAction(event -> cancelAction());
 
         lblError = new Label();
         pane.add(lblError, 0, 7);
@@ -98,45 +111,65 @@ public class UdflugtWindow extends Stage {
 
     }
 
-    private void okAction() {
-
-        String name = txfName.getText();
-        String adress = txfAdress.getText();
-        String city = txfCity.getText();
-        String country = txfCountry.getText();
-
-
-      //  int telefonnr = Number.isANumber(txfTelefonnr.getText()) ? Integer.parseInt(txfTelefonnr.getText()): -1 ;
-
-        if(name.isEmpty()) {
-            alertFejl("navn");
-            txfTelefonnr.getText();
-
-        } else if(adress.isEmpty()){
-            alertFejl("Adresse");
-
-       // } else if(telefonnr < 0) {
-            alertFejl("TelefonNr");
-
-        } else if(city.isEmpty()) {
-            alertFejl("City");
-
-        } else if (country.isEmpty()){
-            alertFejl("Country");
-
-        } else {
-            Alert a = new Alert(Alert.AlertType.INFORMATION);
-            a.setTitle("Tilmelding");
-            a.setHeaderText("Du er nu tilmeldt");
-            a.setContentText("Tak for din tilmelding!");
-            a.showAndWait();
-
-
-
+    private void initControls() {
+        if (udflugt != null) {
+            txfName.setText(udflugt.getName());
+            txfPrice.setText("" + udflugt.getPrice());
+            txfAdress.setText(udflugt.getAdress());
+            txfDato.setText(udflugt.getDate());
+            txfDescription.setText(udflugt.getDescription());
         }
-
     }
 
+
+    private void cancelAction() {
+        hide();
+    }
+
+    private void okAction() {
+
+        String adress = txfAdress.getText().trim();
+        String name = txfName.getText().trim();
+        String description = txfDescription.getText().trim();
+        String dato = txfDato.getText().trim();
+
+        if (name.length() == 0) {
+            lblError.setText("Name is empty");
+
+        } else if (adress.length() == 0) {
+            lblError.setText("Adress is empty");
+
+        } else if (description.length() == 0) {
+            lblError.setText("Description is empty");
+
+        } else if (dato.length() == 0) {
+            lblError.setText("Date is empty");
+
+        } else {
+            int price = -1;
+            try {
+                price = Integer.parseInt(txfPrice.getText().trim());
+            } catch (NumberFormatException ex) {
+            }
+            if (price < 0) {
+                lblError.setText("Price is not a positive number");
+
+            }
+            if (udflugt != null) {
+                Controller.updateUdflugt(udflugt, name, dato, adress, description, price);
+
+            } else {
+                if (price > 0)
+                    Controller.createUdflugt(name, adress, dato, price, description);
+            }
+
+        }
+        hide();
+    }
+}
+
+
+/*
     private void alertFejl(String str) {
         Alert a = new Alert(Alert.AlertType.WARNING);
 
@@ -145,24 +178,13 @@ public class UdflugtWindow extends Stage {
         a.setContentText("Indtast " + str);
         a.showAndWait();
     }
-
-
-    private void initControls(){
-        if (ledsager != null) {
-            txfName.setText(ledsager.getName());
-            txfAdress.setText("" + ledsager.getAdress());
-            txfTelefonnr.setText(ledsager.getPhoneNr() + "");
-
-        } else {
-            txfName.clear();
-            txfAdress.clear();
-            txfTelefonnr.clear();
-        }
-    }
+*/
 
 
 
-}
+
+
+
 
 
 
