@@ -38,10 +38,6 @@ public class AdministrationWindow4 extends Stage {
         this.setScene(scene);
     }
 
-    public AdministrationWindow4(String title) {
-        this(title, null);
-    }
-
     // -------------------------------------------------------------------------
 
     private TextField txfUdflugt, txfDato, txfPris;

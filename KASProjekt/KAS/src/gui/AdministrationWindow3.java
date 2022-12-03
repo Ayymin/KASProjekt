@@ -35,10 +35,6 @@ public class AdministrationWindow3 extends Stage {
         this.setScene(scene);
     }
 
-    public AdministrationWindow3(String title) {
-        this(title, null);
-    }
-
     // -------------------------------------------------------------------------
 
     private TextField txfName, txfDouble, txfSingle;
@@ -160,9 +156,9 @@ public class AdministrationWindow3 extends Stage {
                             }
                         } else {
                             if (konferenceIsSelected) {
-                                Controller.createHotel(name, singlepris, newKonference, doublepris);
+                                Controller.createHotel(name, (int) singlepris, newKonference, (int) doublepris);
                             } else {
-                                Controller.createHotel(name, singlepris, newKonference, doublepris);
+                                Controller.createHotel(name, (int) singlepris, newKonference, (int) doublepris);
                                 Controller.updateKonference(konference, name, startDato, slutDato, sted);
                             }
                         }

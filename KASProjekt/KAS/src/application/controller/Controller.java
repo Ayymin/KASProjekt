@@ -113,12 +113,12 @@ public class Controller {
         konference.addHotel(hotel);
     }
 
-    public static Hotel createHotel(String name, double singlepris, double doublepris) {
+    public static Hotel createHotel(String name, int singlepris, int doublepris) {
         Hotel hotel = new Hotel(name, singlepris, doublepris);
         Storage.addHotel(hotel);
         return hotel;
     }
-    public static Hotel createHotel(String name, double singlepris, Konference konference, double doublepris) {
+    public static Hotel createHotel(String name, int singlepris, Konference konference, int doublepris) {
         Hotel hotel = createHotel(name, singlepris, doublepris);
         konference.addHotel(hotel);
         return hotel;

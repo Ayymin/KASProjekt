@@ -197,13 +197,6 @@ public class AdministrationPane extends GridPane {
         this.updateControls();
     }
 
-	/*private void selectedHotelChanged() {
-		this.updateControls();
-	}
-
-	private void selectedUdflugtChaned() {this.updateControls();}*/
-
-
     public void updateControls() {
         Konference konference = this.konference.getSelectionModel().getSelectedItem();
         if (konference != null) {
@@ -211,11 +204,7 @@ public class AdministrationPane extends GridPane {
             txfStartDato.setText(konference.getDate());
             txfSlutDato.setText(konference.getEndDate());
             txfSted.setText(konference.getAdress());
-			/*StringBuilder sb = new StringBuilder();
-			for (Hotel h : konference.getHotel()) {
-				sb.append(h + "\n");
-			}
-			hotel.setText(sb.toString());*/
+
         } else {
             txfName.clear();
             txfStartDato.clear();

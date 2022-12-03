@@ -80,6 +80,7 @@ public class Udflugt {
     public Konference getKonference() {
         return konference;
     }
-
-
+    public Tilmelding getTilmelding() {
+        return tilmelding;
+    }
 }

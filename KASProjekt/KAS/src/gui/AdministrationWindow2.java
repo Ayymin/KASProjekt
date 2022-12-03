@@ -40,10 +40,6 @@ public class AdministrationWindow2 extends Stage {
         this.setScene(scene);
     }
 
-    public AdministrationWindow2(String title) {
-        this(title, null);
-    }
-
     // -------------------------------------------------------------------------
 
     private TextField txfName, txfStartDato, txfSlutDato, txfSted;
