@@ -122,7 +122,7 @@ public class KonferencePane extends GridPane {
         } catch (Exception ex) {
 
         }
-    }
+}
 
 }
 

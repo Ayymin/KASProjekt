@@ -1,5 +1,7 @@
 package application.model;
 
+import application.controller.Controller;
+
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -34,7 +36,7 @@ public class Tilmelding {
 
 
     public double getTotalPrice() {
-        return totalPrice;
+        return Controller.getTotalPrice(this);
     }
 
     public void setTotalPrice(double totalPrice) {

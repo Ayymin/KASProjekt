@@ -112,6 +112,7 @@ public class UdflugtPane extends GridPane {
     }
 
     private void tilmeldAction() {
+
         TilmeldToUdflugt dia = new TilmeldToUdflugt("Tilmeld ledsager");
         dia.showAndWait();
 
