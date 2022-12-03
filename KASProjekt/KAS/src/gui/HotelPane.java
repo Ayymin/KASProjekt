@@ -134,6 +134,7 @@ public class HotelPane extends GridPane {
 
                                 System.out.println(aTilmelding.getHotel().getName());
                                 System.out.println(aTilmelding.getServices());
+
                             }
                         }
                     }
