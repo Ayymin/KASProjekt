@@ -21,11 +21,7 @@ public class Udflugt {
         this.description = description;
         this.price = price;
     }
-
-    public String toString() {
-        return name;
-    }
-
+    
     public String getAdress() {
         return adress;
     }
@@ -82,6 +78,12 @@ public class Udflugt {
 
     public Konference getKonferencer() {
         return konference;
+    }
+
+
+    @Override
+    public String toString() {
+        return name + " (" + date + ") (" + price + " kr)";
     }
 
 
