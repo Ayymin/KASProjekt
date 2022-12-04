@@ -16,7 +16,12 @@ public class Controller {
     public static double getTotalPrice(Tilmelding tilmelding) {
         int totalPrice = 0;
 
-
+    /*public static Ledsager tilmeldLedsager(Udflugt udflugt, String name, String adress, int tlfNr, String city, String country){
+        Ledsager ledsager = new Ledsager(name,adress, tlfNr, city, country);
+        Storage.addLesager(ledsager);
+        return ledsager;
+    }
+*/
         if (tilmelding.getHotel() != null) {
             System.out.println("Afaef");
             for (int i = 0; i < (getTotalDays(tilmelding.getArrivalDate(), tilmelding.getDepatureDate()) - 1); i++) {    //Loops and subtracts with 1, to calculate for 2 stays instead of 1.
