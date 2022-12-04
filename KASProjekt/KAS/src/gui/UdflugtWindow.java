@@ -45,6 +45,7 @@ public class UdflugtWindow extends Stage {
         Scene scene = new Scene(pane);
         this.setScene(scene);
 
+
     }
 
     public UdflugtWindow(String title){
