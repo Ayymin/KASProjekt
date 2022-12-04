@@ -10,9 +10,6 @@ public class Udflugt {
     private String description;
     private int price;
 
-    private Konference konference;
-
-
     private ArrayList<Tilmelding> tilmelidnger;
 
     private Tilmelding tilmelding;
@@ -24,11 +21,7 @@ public class Udflugt {
         this.description = description;
         this.price = price;
     }
-
-    public String toString() {
-        return name;
-    }
-
+    
     public String getAdress() {
         return adress;
     }
@@ -81,6 +74,16 @@ public class Udflugt {
 
     public Tilmelding getTilmelding() {
         return tilmelding;
+    }
+
+    public Konference getKonferencer() {
+        return konference;
+    }
+
+
+    @Override
+    public String toString() {
+        return name + " (" + date + ") (" + price + " kr)";
     }
 
 

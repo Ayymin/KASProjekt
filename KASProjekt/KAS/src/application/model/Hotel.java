@@ -69,6 +69,10 @@ public class Hotel {
         return konference;
     }
 
+    @Override
+    public String toString() {return name + " (Singlepris: "+ singlePrice + " kr) " + "(Doublepris: " + doubelPrice + " kr)";}
+
+
 
 
 }

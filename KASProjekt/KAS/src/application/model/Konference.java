@@ -86,13 +86,9 @@ public class Konference {
         this.description = description;
     }
 
-    public String getEndDate() {
-        return endDate;
-    }
+    public String getEndDate() {return endDate;}
 
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
-    }
+    public void setEndDate(String endDate) {this.endDate = endDate;}
 
     public ArrayList<Hotel> getHotels() {
         return hotels;
@@ -118,8 +114,9 @@ public class Konference {
         return priceADay;
     }
 
+    @Override
     public String toString() {
-        return getName();
+        return name;
     }
 
 

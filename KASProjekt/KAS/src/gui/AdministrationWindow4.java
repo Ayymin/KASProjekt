@@ -103,9 +103,9 @@ public class AdministrationWindow4 extends Stage {
             txfUdflugt.setText(udflugt.getName());
             txfDato.setText(udflugt.getDate());
             txfPris.setText("" + udflugt.getPrice());
-            if (udflugt.getKonference() != null) {
+            if (udflugt.getKonferencer() != null) {
                 konferenceCheckBox.setSelected(true);
-                konferenceComboBox.getSelectionModel().select(udflugt.getKonference());
+                konferenceComboBox.getSelectionModel().select(udflugt.getKonferencer());
             } else {
                 konferenceComboBox.getSelectionModel().select(0);
             }
