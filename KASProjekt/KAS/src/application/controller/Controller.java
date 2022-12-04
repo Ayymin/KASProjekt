@@ -65,9 +65,11 @@ public class Controller {
         return hotels;
     }
 
-    public static ArrayList<Udflugt> getUdflugter() {
+    /*public static ArrayList<Udflugt> getUdflugter() {
         ArrayList<Udflugt> udflugts = Storage.getUdflugter();
         return udflugts;
+    }*/
+    public static ArrayList<Udflugt> getUdflugter() {return Storage.getUdflugter();
     }
 
     public static ArrayList<Deltager> getDeltager() {

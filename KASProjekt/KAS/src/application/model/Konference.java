@@ -90,9 +90,12 @@ public class Konference {
 
     public void setEndDate(String endDate) {this.endDate = endDate;}
 
-    public ArrayList<Hotel> getHotels() {
-        return hotels;
+
+    public ArrayList<Hotel> getHotel() {
+        return new ArrayList<>(hotels);
     }
+
+    public ArrayList<Udflugt> getUdflugt() {return new ArrayList<>(udflugter);}
 
     public void addHotel(Hotel hotel) {
         hotels.add(hotel);
