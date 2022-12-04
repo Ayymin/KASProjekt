@@ -118,8 +118,9 @@ public class Konference {
         return priceADay;
     }
 
+    @Override
     public String toString() {
-        return getName();
+        return name;
     }
 
 
