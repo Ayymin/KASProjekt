@@ -15,11 +15,8 @@ import javafx.stage.StageStyle;
 
 public class AdministrationWindow extends Stage {
     private Konference konference;
-    private String endDate;
-    private String adress;
     private String topic;
     private String description;
-    private String date;
     private double priceADay;
 
     public AdministrationWindow(String title, Konference konference) {
@@ -135,7 +132,7 @@ public class AdministrationWindow extends Stage {
                         if (konference != null) {
                             Controller.updateKonference(konference, name, startDato, slutDato, sted);
                         } else {
-                            Controller.createKonference(name, endDate, adress, topic, description, date, priceADay);
+                            Controller.createKonference(name, slutDato, sted, topic, description, startDato, priceADay);
                         }
 
                         this.hide();

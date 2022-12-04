@@ -35,7 +35,7 @@ public class AdministrationPane extends GridPane {
         this.add(konference, 0, 1, 1, 3);
         konference.setPrefWidth(200);
         konference.setPrefHeight(200);
-        konference.getItems().setAll(Controller.getKonference());
+        konference.getItems().setAll(Controller.getKonferencer());
 
         ChangeListener<Konference> listener = (ov, oldKonference, newKonference) -> this.selectedKonferenceChanged();
         konference.getSelectionModel().selectedItemProperty().addListener(listener);
@@ -195,7 +195,7 @@ public class AdministrationPane extends GridPane {
         AdministrationWindow dia = new AdministrationWindow("Opret konference");
         dia.showAndWait();
 
-        konference.getItems().setAll(Controller.getKonference());
+        konference.getItems().setAll(Controller.getKonferencer());
         int index = konference.getItems().size() - 1;
         konference.getSelectionModel().select(index);
     }
@@ -208,7 +208,7 @@ public class AdministrationPane extends GridPane {
             kw2.showAndWait();
 
             int selectIndex = this.konference.getSelectionModel().getSelectedIndex();
-            this.konference.getItems().setAll(Controller.getKonference());
+            this.konference.getItems().setAll(Controller.getKonferencer());
             this.konference.getSelectionModel().select(selectIndex);
 
         }
@@ -225,7 +225,7 @@ public class AdministrationPane extends GridPane {
             Optional<ButtonType> result = alert.showAndWait();
             if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
                 Controller.deleteKonference(konference);
-                this.konference.getItems().setAll(Controller.getKonference());
+                this.konference.getItems().setAll(Controller.getKonferencer());
                 this.updateControls();
             }
         }

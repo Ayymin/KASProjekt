@@ -137,7 +137,5 @@ public class Controller {
     public static ArrayList<Konference> getKonferencer() {
         return Storage.getKonferencer();
     }
-
-
 }
 

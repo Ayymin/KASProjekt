@@ -74,7 +74,7 @@ public class AdministrationWindow3 extends Stage {
 
         konferenceComboBox = new ComboBox<>();
         pane.add(konferenceComboBox, 0, 5);
-        konferenceComboBox.getItems().addAll(Controller.getKonference());
+        konferenceComboBox.getItems().addAll(Controller.getKonferencer());
         konferenceComboBox.setDisable(true);
 
         Button btnCancel = new Button("Cancel");
