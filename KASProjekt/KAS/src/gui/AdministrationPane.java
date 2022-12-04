@@ -143,6 +143,7 @@ public class AdministrationPane extends GridPane {
         btnHotelBooket.setOnAction(event -> hotelTilmeldinger());
 
 
+
         if (konference.getItems().size() > 0) {
             konference.getSelectionModel().select(0);
         }
@@ -151,7 +152,6 @@ public class AdministrationPane extends GridPane {
     private void konferenceTilmeldinger() {
         Konference konference = this.konference.getSelectionModel().getSelectedItem();
         deltagende.getItems().setAll(String.valueOf(Controller.getKonferenceDeltager(konference)));
-
     }
     private void udflugtTilmeldinger() {
         Udflugt udflugt = this.udflugt.getSelectionModel().getSelectedItem();
