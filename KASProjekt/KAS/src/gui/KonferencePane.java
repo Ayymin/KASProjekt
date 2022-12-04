@@ -4,7 +4,6 @@ import application.controller.Controller;
 import application.model.Konference;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,7 +12,7 @@ import javafx.scene.layout.GridPane;
 
 import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
+
 
 public class KonferencePane extends GridPane {
 
@@ -89,7 +88,7 @@ public class KonferencePane extends GridPane {
     }
 
     private void tilmeldAction() {
-        KonferenceWindow window = new KonferenceWindow("Yo",lvwKonferencer.getSelectionModel().getSelectedItem());
+        KonferenceWindow window = new KonferenceWindow("Yo", lvwKonferencer.getSelectionModel().getSelectedItem());
         window.showAndWait();
     }
 

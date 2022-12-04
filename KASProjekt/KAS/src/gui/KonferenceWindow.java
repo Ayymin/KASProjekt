@@ -1,7 +1,7 @@
 package gui;
 
-import application.model.Tilmelding;
-import application.model.Deltager;
+import application.model.Konference;
+import javafx.geometry.HPos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -9,9 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.geometry.Insets;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import org.w3c.dom.Text;
+
 
 public class KonferenceWindow extends Stage {
     //Textfields
@@ -21,6 +20,7 @@ public class KonferenceWindow extends Stage {
     private TextField txfFirma = new TextField();
     private TextField txfTlfNr = new TextField();
     private TextField txfAfrejse = new TextField();
+    private TextField txfFirmaTlfNr = new TextField();
 
     private TextField txfBy = new TextField();
     private TextField txfLand = new TextField();
@@ -29,6 +29,8 @@ public class KonferenceWindow extends Stage {
 
     //Checkbox
     private CheckBox cbSpeaker = new CheckBox();
+
+    private Konference selectedKonference;
 
 
     public KonferenceWindow(String title, Konference selectedItem) {
@@ -40,6 +42,8 @@ public class KonferenceWindow extends Stage {
         this.setScene(scene);
         this.setResizable(false);
     }
+
+
 
     private void initContent(GridPane pane) {
         pane.setVgap(10);
@@ -119,6 +123,7 @@ public class KonferenceWindow extends Stage {
             fejlBesked = "Indtast en afrejsedato";
         }
 
+
         if (fejlBesked != null) {
             lblError.setText(fejlBesked);
             return;
@@ -128,6 +133,5 @@ public class KonferenceWindow extends Stage {
 }
 
 
-//<---------------------------------------------------------------------------------------------------------------->
 
 

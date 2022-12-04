@@ -144,6 +144,8 @@ public class AdministrationPane extends GridPane {
 
 
 
+
+
         if (konference.getItems().size() > 0) {
             konference.getSelectionModel().select(0);
         }
