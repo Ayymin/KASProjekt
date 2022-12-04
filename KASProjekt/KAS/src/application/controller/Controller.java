@@ -99,6 +99,10 @@ public class Controller {
         Storage.addTilmelding(tilmelding);
     }
 
+    public static void addDeltager(Deltager deltager) {
+        Storage.addDeltager(deltager);
+    }
+
     public static void updateKonference(Konference konference, String name, String startDato, String slutDato, String sted) {
         konference.setName(name);
         konference.setDate(startDato);

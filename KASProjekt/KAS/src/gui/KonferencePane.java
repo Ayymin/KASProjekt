@@ -19,11 +19,9 @@ public class KonferencePane extends GridPane {
 
     private TextField txfName, txfDesc, txfDate, txfendDate,txfTopic;
 
-    private final String[] svar = {"Ja", "Nej"};
+    private Button btnTilmeld = new Button("Tilmeld konference");
 
-    private final ToggleGroup fHolder = new ToggleGroup();
-    private CheckBox cbSpeaker = new CheckBox();
-
+    private Button btnPris = new Button("Samlet pris");
 
     private ListView<Konference> lvwKonferencer;
 
@@ -78,9 +76,8 @@ public class KonferencePane extends GridPane {
 
         Button btnTilmeld = new Button("Tilmeld konference");
         hbxButtons1.getChildren().add(btnTilmeld);
-        btnTilmeld.setOnAction(event -> this.tilmeldAction());
-
-        //------------------------------ Gui Hell ends ------------------------------------
+        hbxButtons1.getChildren().add(btnPris);
+        btnTilmeld.setDisable(true);
 
         lvwKonferencer = new ListView<>();
         this.add(lvwKonferencer, 0, 1, 1, 3);
@@ -92,12 +89,8 @@ public class KonferencePane extends GridPane {
     }
 
     private void tilmeldAction() {
-        KonferenceWindow konferenceWindow = new KonferenceWindow("Yo");
-        Stage stage = new Stage();
-        Scene scene = new Scene(konferenceWindow);
-        stage.setScene(scene);
-        stage.show();
-        stage.setTitle("Tilmelding");
+        KonferenceWindow window = new KonferenceWindow("Yo",lvwKonferencer.getSelectionModel().getSelectedItem());
+        window.showAndWait();
     }
 
     private void selectedKonferenceChanged() {                                                  //Prints out information regarding a selected Conference.

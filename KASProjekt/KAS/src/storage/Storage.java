@@ -143,6 +143,9 @@ public class Storage {
         udflugter.add(udflugt);
     }
 
+    public static void addDeltager(Deltager deltager) {
+        deltagers.add(deltager);
+    }
 
     public static void removeUdflugt(Udflugt udflugt) {
         udflugter.remove(udflugt);
