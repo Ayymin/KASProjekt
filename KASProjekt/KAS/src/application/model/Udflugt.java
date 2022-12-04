@@ -10,6 +10,8 @@ public class Udflugt {
     private String description;
     private int price;
 
+    private Konference konference;
+
 
     private ArrayList<Tilmelding> tilmelidnger;
 
@@ -82,5 +84,8 @@ public class Udflugt {
     }
 
 
+    public Konference getKonference() {
+        return this.konference;
+    }
 
 }
