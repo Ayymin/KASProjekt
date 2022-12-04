@@ -130,6 +130,7 @@ public class Storage {
         udflugter.add(udflugt);
     }
 
+
     public static void removeUdflugt(Udflugt udflugt) {
         udflugter.remove(udflugt);
     }

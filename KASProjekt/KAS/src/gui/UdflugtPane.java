@@ -95,31 +95,28 @@ public class UdflugtPane extends GridPane {
         hbxButtons1.getChildren().add(btnTilmeld);
         btnTilmeld.setOnAction(event -> this.tilmeldAction());
 
-        Button btnCreate = new Button("Create");
+        /*Button btnCreate = new Button("Create");
         hbxButtons1.getChildren().add(btnCreate);
         btnCreate.setOnAction(event -> this.createAction());
-
-        Button btnDelete = new Button("Delete");
-        hbxButtons1.getChildren().add(btnDelete);
-        btnDelete.setOnAction(event -> this.deleteAction());
-
-        Button btnUpdate = new Button("Update");
+        */
+        /*Button btnUpdate = new Button("Update");
         hbxButtons1.getChildren().add(btnUpdate);
         btnUpdate.setOnAction(event -> this.updateAction());
-
+*/
 
 
     }
 
     private void tilmeldAction() {
 
-        TilmeldToUdflugt dia = new TilmeldToUdflugt("Tilmeld ledsager");
+        Udflugt udflugt = lvwUdflugter.getSelectionModel().getSelectedItem();
+        TilmeldToUdflugt dia = new TilmeldToUdflugt("Tilmeld ledsager", udflugt);
         dia.showAndWait();
 
     }
 
 
-    private void updateAction(){
+    /*private void updateAction(){
         Udflugt udflugter = lvwUdflugter.getSelectionModel().getSelectedItem();
         if(udflugter != null){
 
@@ -133,8 +130,8 @@ public class UdflugtPane extends GridPane {
 
         }
     }
-
-    private void deleteAction() {
+*/
+    /*private void deleteAction() {
         Udflugt udflugt = lvwUdflugter.getSelectionModel().getSelectedItem();
         if(udflugt != null){
 
@@ -151,9 +148,9 @@ public class UdflugtPane extends GridPane {
         }
 
 
-    }
+    }*/
 
-    private void createAction() {
+   /*private void createAction() {
 
         UdflugtWindow dia = new UdflugtWindow("Create Udflugt");
         dia.showAndWait();
@@ -162,7 +159,7 @@ public class UdflugtPane extends GridPane {
         this.updateControls();
     }
 
-
+*/
 
     private void selectedUdflugtChanged() {
 
