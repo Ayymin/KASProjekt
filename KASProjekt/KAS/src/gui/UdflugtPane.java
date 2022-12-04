@@ -95,16 +95,6 @@ public class UdflugtPane extends GridPane {
         hbxButtons1.getChildren().add(btnTilmeld);
         btnTilmeld.setOnAction(event -> this.tilmeldAction());
 
-        /*Button btnCreate = new Button("Create");
-        hbxButtons1.getChildren().add(btnCreate);
-        btnCreate.setOnAction(event -> this.createAction());
-        */
-        /*Button btnUpdate = new Button("Update");
-        hbxButtons1.getChildren().add(btnUpdate);
-        btnUpdate.setOnAction(event -> this.updateAction());
-*/
-
-
     }
 
     private void tilmeldAction() {
@@ -114,52 +104,6 @@ public class UdflugtPane extends GridPane {
         dia.showAndWait();
 
     }
-
-
-    /*private void updateAction(){
-        Udflugt udflugter = lvwUdflugter.getSelectionModel().getSelectedItem();
-        if(udflugter != null){
-
-            UdflugtWindow dia = new UdflugtWindow("Update Udflugt", udflugter);
-            dia.showAndWait();
-
-            int selectIndex = lvwUdflugter.getSelectionModel().getSelectedIndex();
-            lvwUdflugter.getItems().setAll(Controller.getUdflugter());
-            lvwUdflugter.getSelectionModel().select(selectIndex);
-
-
-        }
-    }
-*/
-    /*private void deleteAction() {
-        Udflugt udflugt = lvwUdflugter.getSelectionModel().getSelectedItem();
-        if(udflugt != null){
-
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Delete Udflugt");
-            alert.setHeaderText("Are you sure?");
-            Optional<ButtonType> result = alert.showAndWait();
-
-            if((result.isPresent()) && (result.get() == ButtonType.OK)){
-                //Controller.deleteUdflugt(udflugt);
-                lvwUdflugter.getItems().setAll(Controller.getUdflugter());
-                this.updateControls();
-            }
-        }
-
-
-    }*/
-
-   /*private void createAction() {
-
-        UdflugtWindow dia = new UdflugtWindow("Create Udflugt");
-        dia.showAndWait();
-
-        lvwUdflugter.getItems().setAll(Controller.getUdflugter());
-        this.updateControls();
-    }
-
-*/
 
     private void selectedUdflugtChanged() {
 

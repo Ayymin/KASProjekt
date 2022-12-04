@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.skin.LabeledSkinBase;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -93,9 +92,6 @@ public class AdministrationWindow extends Stage {
         pane.add(lblDescription, 0, 10);
         pane.add(lblPriceADay, 0, 12);
 
-
-
-
         Button btnCancel = new Button("Cancel");
         pane.add(btnCancel, 0, 14);
         GridPane.setHalignment(btnCancel, HPos.LEFT);
@@ -173,34 +169,6 @@ public class AdministrationWindow extends Stage {
             Controller.createKonference(name, slutDato, sted, topic, description, startDato, Double.parseDouble(priceADay));
             this.hide();
         }
-
-
-
-
-
-        /*if (name.length() == 0) {
-            lblError.setText("Indtast navn");
-        } else {
-            if (startDato.length() == 0) {
-                lblError.setText("Indtast startdato");
-            } else {
-                if (slutDato.length() == 0) {
-                    lblError.setText("Indtast slutdato");
-                } else {
-                    if (sted.length() == 0) {
-                        lblError.setText("Indtast sted");
-                    } else {
-                        if (konference != null) {
-                            Controller.updateKonference(konference, name, startDato, slutDato, sted);
-                        } else {
-                            Controller.createKonference(name, slutDato, sted, topic, description, startDato, priceADay);
-                        }
-
-                        this.hide();
-                    }
-                }
-            }
-        }*/
     }
 }
 

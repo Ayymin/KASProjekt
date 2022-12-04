@@ -112,7 +112,7 @@ public class AdministrationWindow4 extends Stage {
         } else {
             txfUdflugt.clear();
             txfDato.clear();
-            //txfPris.clear();
+            txfPris.clear();
             konferenceComboBox.getSelectionModel().select(0);
         }
     } **/

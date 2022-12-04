@@ -72,5 +72,4 @@ public class Main {
         System.out.println("Niels Petersen skal betale: " + Controller.getTotalPrice(nielsPetersenTilmelding));
         System.out.println("Lone skal betale: " + Controller.getTotalPrice(loneJensenTilmelding));
     }
-
 }

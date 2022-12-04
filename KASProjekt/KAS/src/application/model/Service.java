@@ -2,8 +2,8 @@ package application.model;
 
 public class Service {
 
-    String name;
-    double price;
+    private String name;
+    private double price;
 
 
     public Service(String name, double price){

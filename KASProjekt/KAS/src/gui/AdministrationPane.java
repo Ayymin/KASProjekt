@@ -22,6 +22,8 @@ public class AdministrationPane extends GridPane {
 
     private ListView<String> deltagende;
 
+    private Label lblError;
+
     public AdministrationPane() {
         this.setPadding(new Insets(20));
         this.setHgap(20);
@@ -53,33 +55,13 @@ public class AdministrationPane extends GridPane {
         deltagende.setPrefWidth(250);
         deltagende.setPrefHeight(200);
 
-        //deltagende.getItems().setAll("aef" + "aef");
-		//ChangeListener<Hotel> hotelChangeListener = (ov, oldHotel, newHotel) -> this.selectedHotelChanged();
-		//hotel.getSelectionModel().selectedItemProperty().addListener(hotelChangeListener);
-
-        /*hotel1 = new TextArea();
-        this.add(hotel1, 2, 3);
-        hotel1.setPrefWidth(350);
-        hotel1.setPrefHeight(100);
-        hotel1.setEditable(false);*/
-
         Label lblUdflugt = new Label("Udflugt");
         this.add(lblUdflugt, 1, 7);
-
-        /*udflugt1 = new TextArea();
-        this.add(udflugt1,2,7);
-        udflugt1.setPrefWidth(300);
-        udflugt1.setPrefHeight(100);
-        udflugt1.setEditable(false);*/
 
         udflugt = new ListView<>();
 		this.add(udflugt, 2, 7);
 		udflugt.setPrefWidth(300);
 		udflugt.setPrefHeight(100);
-
-
-		//ChangeListener<Udflugt> udflugtChangeListener = (ov, oldUdflugt, newUdflugt) -> this.selectedUdflugtChaned();
-		//udflugt.getSelectionModel().selectedItemProperty().addListener(udflugtChangeListener);
 
         Label lblName = new Label("Konferencenavn");
         this.add(lblName, 1, 1);
@@ -108,6 +90,10 @@ public class AdministrationPane extends GridPane {
         txfSted = new TextField();
         this.add(txfSted, 2, 2);
         txfSted.setEditable(false);
+
+        lblError = new Label();
+        this.add(lblError, 0, 8);
+        lblError.setStyle("-fx-text-fill: red");
 
         HBox hbxButtons = new HBox(40);
         this.add(hbxButtons, 2, 9, 3, 1);
@@ -166,18 +152,25 @@ public class AdministrationPane extends GridPane {
         Konference konference = this.konference.getSelectionModel().getSelectedItem();
         deltagende.getItems().setAll(String.valueOf(Controller.getKonferenceDeltager(konference)));
 
-
     }
     private void udflugtTilmeldinger() {
         Udflugt udflugt = this.udflugt.getSelectionModel().getSelectedItem();
-        deltagende.getItems().setAll(String.valueOf(Controller.getUdflugtDeltager(udflugt)));
+        if (udflugt == null) {
+            lblError.setText("Vælg en udflugt");
+        } else {
+            deltagende.getItems().setAll(String.valueOf(Controller.getUdflugtDeltager(udflugt)));
+        }
     }
     private void hotelTilmeldinger() {
         Hotel hotel = this.hotel.getSelectionModel().getSelectedItem();
-        deltagende.getItems().setAll(String.valueOf(Controller.getHotelBookings(hotel)));
+
+        if (hotel == null) {
+            lblError.setText("Vælg et hotel");
+        } else {
+            deltagende.getItems().setAll(String.valueOf(Controller.getHotelBookings(hotel)));
+        }
 
     }
-
 
     private void tilføjHotel() {
         Hotel hotel = this.hotel.getSelectionModel().getSelectedItem();
@@ -270,19 +263,6 @@ public class AdministrationPane extends GridPane {
             udflugt.getItems().setAll(Controller.getKonferenceUdflugter(konference));
 
 
-
-
-            StringBuilder sb = new StringBuilder();
-            for (Hotel h : konference.getHotels()) {
-                sb.append(h + "\n");
-            }
-            //hotel1.setText(sb.toString());
-
-            StringBuilder sb1 = new StringBuilder();
-            for (Udflugt u : konference.getUdflugter()) {
-                sb1.append(u + "\n");
-            }
-            //udflugt1.setText(sb1.toString());
         } else {
             txfName.clear();
             txfStartDato.clear();
