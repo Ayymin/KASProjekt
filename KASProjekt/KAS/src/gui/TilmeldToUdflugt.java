@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.Scene;
 import javafx.geometry.HPos;
+import storage.Storage;
 
 public class TilmeldToUdflugt extends Stage {
 
@@ -163,12 +164,25 @@ public class TilmeldToUdflugt extends Stage {
 
             String input = deltagerNavn;
             boolean nameFound = false;
+            boolean ledsagerFound = false;
             for (Tilmelding aTilmelding : Controller.getTilmeldinger()) {
                 if (aTilmelding.getDeltager().getName().equalsIgnoreCase(input)) {
+                    //Ledsager ledsager = new Ledsager(name, adress, tlfnummer, city, country);
+                    for (Ledsager aLedsager: Storage.getLedsagers()) {
+                        if (aLedsager.equals(name)) {
+                            ledsagerFound = true;
+                            Controller.addUdflugtToLedsager(udflugt,aLedsager);
 
-                    Ledsager ledsager = new Ledsager(name, adress, tlfnummer, city, country);
-                    ledsager.addUdflugt(udflugt);
-                    aTilmelding.setLedsager(ledsager);
+                        }
+                    }
+                    if (!ledsagerFound) {
+                        Ledsager ledsager = new Ledsager(name, adress, tlfnummer, city, country);
+                        Controller.addLedsager(ledsager);
+                        Controller.addUdflugtToLedsager(udflugt, ledsager);
+                        aTilmelding.setLedsager(ledsager);
+                    }
+
+
                     nameFound = true;
 
                     Alert a = new Alert(Alert.AlertType.INFORMATION);
@@ -184,15 +198,8 @@ public class TilmeldToUdflugt extends Stage {
             if (!nameFound) {
                 alertfejl("Deltagers navn findes ikke");
             }
-
-
-
-
         }
     }
-
-
-
 
 
 

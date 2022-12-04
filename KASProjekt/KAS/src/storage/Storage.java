@@ -59,7 +59,7 @@ public class Storage {
         Tilmelding peterSommerTilmelding = new Tilmelding("18-05-2022", konference, "20-05-2022", peterSommer);
         peterSommerTilmelding.setLedsager(mieSommer);
         peterSommerTilmelding.setHotel(denHvideSvane);
-        //peterSommerTilmelding.addService(denHvideSvaneWifi);
+        peterSommerTilmelding.addService(denHvideSvaneWifi);
 
         mieSommer.addUdflugt(trapholdtMuseumKolding);
         mieSommer.addUdflugt(egeskov);
@@ -104,10 +104,9 @@ public class Storage {
         return hotels;
     }
 
-    /*public static ArrayList<Udflugt> getUdflugter() {
-        return udflugter;
-    }*/
-    public static ArrayList<Udflugt> getUdflugter() {return new ArrayList<Udflugt>(udflugter);}
+    public static ArrayList<Udflugt> getUdflugter() {
+        return new ArrayList<Udflugt>(udflugter);
+    }
 
 
     public static ArrayList<Deltager> getDeltagers() {
@@ -173,6 +172,19 @@ public class Storage {
 
     public static void addKonferenceUdflugt(Konference konference, Udflugt udflugt) {
         konference.addUdflugt(udflugt);
+    }
+
+    public static void createLedsager(String name, String adress, int phoneNr, String city, String country) {
+        Ledsager ledsager = new Ledsager(name, adress, phoneNr, city, country);
+        ledsagers.add(ledsager);
+    }
+
+    public static void addUdflugtToLedsager(Udflugt udflugt, Ledsager ledsager) {
+        ledsager.addUdflugt(udflugt);
+    }
+
+    public static void addLedsager(Ledsager ledsager) {
+        ledsagers.add(ledsager);
     }
 
 }

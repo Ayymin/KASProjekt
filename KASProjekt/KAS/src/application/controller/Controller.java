@@ -183,5 +183,17 @@ public class Controller {
 
         return hotelBookings;
     }
+
+    public static void createLedsager(String name, String adress, int phoneNr, String city, String country) {
+        Storage.createLedsager(name,adress,phoneNr,city,country);
+    }
+
+    public static void addUdflugtToLedsager(Udflugt udflugt, Ledsager ledsager) {
+        Storage.addUdflugtToLedsager(udflugt, ledsager);
+    }
+
+    public static void addLedsager(Ledsager ledsager) {
+        Storage.addLedsager(ledsager);
+    }
 }
 

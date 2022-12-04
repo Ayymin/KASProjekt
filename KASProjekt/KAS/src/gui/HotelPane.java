@@ -30,7 +30,7 @@ public class HotelPane extends GridPane {
         this.setPadding(new Insets(20));
         this.setHgap(20);
         this.setVgap(10);
-        this.setGridLinesVisible(true);
+        this.setGridLinesVisible(false);
 
 
         Label lblOvernat = new Label("Overnatningsønsker");
@@ -102,7 +102,6 @@ public class HotelPane extends GridPane {
     //TODO skal give fejlbeskeder
     public void bookHotel() {
 
-
         Dialog<String> dialog = new TextInputDialog();
         dialog.setTitle("Indtast dit navn");
         dialog.setHeaderText("Indtast dit navn for at booke hotellet");
@@ -129,12 +128,8 @@ public class HotelPane extends GridPane {
                                     RadioButton rbService = (RadioButton) aService;
                                     if (rbService.isSelected()) {
                                         aTilmelding.addService((Service) aService.getUserData());
-                                        System.out.println("aef");
                                     }
                                 }
-
-                                System.out.println(aTilmelding.getHotel().getName());
-                                System.out.println(aTilmelding.getServices());
                             }
                         }
                     }

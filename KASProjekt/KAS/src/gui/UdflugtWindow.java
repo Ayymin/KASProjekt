@@ -45,6 +45,7 @@ public class UdflugtWindow extends Stage {
         Scene scene = new Scene(pane);
         this.setScene(scene);
 
+
     }
 
     public UdflugtWindow(String title){
@@ -168,17 +169,6 @@ public class UdflugtWindow extends Stage {
     }
 }}
 
-
-/*
-    private void alertFejl(String str) {
-        Alert a = new Alert(Alert.AlertType.WARNING);
-
-        a.setTitle("Fejl");
-        a.setHeaderText("Fejl i et felt");
-        a.setContentText("Indtast " + str);
-        a.showAndWait();
-    }
-*/
 
 
 

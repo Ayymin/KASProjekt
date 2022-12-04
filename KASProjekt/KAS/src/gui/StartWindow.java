@@ -14,9 +14,6 @@ import javafx.stage.Stage;
 public class StartWindow extends Application {
 
 
-
-
-
         @Override
         public void start(Stage stage) {
             stage.setTitle("Arcitecture Demo");
@@ -44,14 +41,6 @@ public class StartWindow extends Application {
 
             KonferencePane konferencePane = new KonferencePane();
             tabKonference.setContent(konferencePane);
-            //tabKonference.setOnSelectionChanged(event -> konferencePane.);
-
-            Tab tabTilmelding = new Tab("Tilmelding");
-            tabPane.getTabs().add(tabTilmelding);
-
-            TilmeldingPane tilmeldingPane = new TilmeldingPane();
-            tabTilmelding.setContent(tilmeldingPane);
-            //tabTilmelding.setOnSelectionChanged(event -> tilmeldingPane.());
 
             Tab tabBookHotel = new Tab("Book Hotel");
             tabPane.getTabs().add(tabBookHotel);
