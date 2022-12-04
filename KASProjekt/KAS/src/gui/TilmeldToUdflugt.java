@@ -184,10 +184,6 @@ public class TilmeldToUdflugt extends Stage {
             if (!nameFound) {
                 alertfejl("Deltagers navn findes ikke");
             }
-
-
-
-
         }
     }
 
