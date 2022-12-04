@@ -218,7 +218,6 @@ public class AdministrationPane extends GridPane {
         Konference konference = this.konference.getSelectionModel().getSelectedItem();
         if (konference != null) {
 
-
             Alert alert = new Alert(AlertType.CONFIRMATION);
             alert.setTitle("Slet konference");
             alert.setHeaderText("Konferencen vil blive slettet permanent");
@@ -252,7 +251,7 @@ public class AdministrationPane extends GridPane {
             txfSted.setText(konference.getAdress());
 
             StringBuilder sb = new StringBuilder();
-            for (Hotel h : konference.getHotels()) {
+            for (Hotel h : konference.getHotel()) {
                 sb.append(h + "\n");
             }
             hotel1.setText(sb.toString());

@@ -90,9 +90,11 @@ public class Storage {
         return hotels;
     }
 
-    public static ArrayList<Udflugt> getUdflugter() {
+    /*public static ArrayList<Udflugt> getUdflugter() {
         return udflugter;
-    }
+    }*/
+    public static ArrayList<Udflugt> getUdflugter() {return new ArrayList<Udflugt>(udflugter);}
+
 
     public static ArrayList<Deltager> getDeltagers() {
         return deltagers;
