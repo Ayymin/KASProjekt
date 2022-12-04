@@ -13,6 +13,7 @@ public class Udflugt {
     private ArrayList<Tilmelding> tilmelidnger;
 
     private Tilmelding tilmelding;
+    private Konference konference;
 
     public Udflugt(String name, String date, String adress, String description, int price) {
         this.name = name;
@@ -71,24 +72,18 @@ public class Udflugt {
         this.tilmelidnger = tilmelidnger;
     }
 
+    public Konference getKonference() {
+        return konference;
+    }
+
 
     public Tilmelding getTilmelding() {
         return tilmelding;
     }
 
-    public Konference getKonferencer() {
-        return konference;
-    }
-
-
     @Override
     public String toString() {
         return name + " (" + date + ") (" + price + " kr)";
-    }
-
-
-    public Konference getKonference() {
-        return this.konference;
     }
 
 }
