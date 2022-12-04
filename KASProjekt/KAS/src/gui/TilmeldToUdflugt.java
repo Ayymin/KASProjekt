@@ -151,7 +151,6 @@ public class TilmeldToUdflugt extends Stage {
         } else if (country.isEmpty()) {
             alertfejl("Country");
 
-
         } else if (deltagerNavn.isEmpty()) {
             alertfejl("Deltager navn");
 
@@ -159,28 +158,43 @@ public class TilmeldToUdflugt extends Stage {
             alertfejl("By");
 
 
+
         } else {
-            Alert a = new Alert(Alert.AlertType.INFORMATION);
-            a.setTitle("Tilmelding");
-            a.setHeaderText("Du er nu tilmeldt");
-            a.setContentText("Tak for din tilmeldning");
-            a.showAndWait();
-        }
 
+            String input = deltagerNavn;
+            boolean nameFound = false;
+            for (Tilmelding aTilmelding : Controller.getTilmeldinger()) {
+                if (aTilmelding.getDeltager().getName().equalsIgnoreCase(input)) {
 
+                    Ledsager ledsager = new Ledsager(name, adress, tlfnummer, city, country);
+                    ledsager.addUdflugt(udflugt);
+                    aTilmelding.setLedsager(ledsager);
+                    nameFound = true;
 
+                    Alert a = new Alert(Alert.AlertType.INFORMATION);
+                    a.setTitle("Tilmelding");
+                    a.setHeaderText("Du er nu tilmeldt");
+                    a.setContentText("Tak for din tilmeldning");
+                    a.showAndWait();
+                    this.hide();
 
-
-        Ledsager ledsager = new Ledsager(name, adress, tlfnummer, city, country);
-        ledsager.addUdflugt(udflugt);
-
-        String input = "";
-        for (Tilmelding aTilmelding : Controller.getTilmeldinger()) {
-            if (aTilmelding.getDeltager().getName().equalsIgnoreCase(input)) {
-                aTilmelding.setLedsager(ledsager);
                 }
             }
+
+            if (!nameFound) {
+                alertfejl("Deltagers navn findes ikke");
+            }
+
+
+
+
         }
+    }
+
+
+
+
+
 
     private void alertfejl (String str){
         Alert a = new Alert(Alert.AlertType.WARNING);
