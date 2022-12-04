@@ -91,7 +91,7 @@ public class Konference {
     public void setEndDate(String endDate) {this.endDate = endDate;}
 
 
-    public ArrayList<Hotel> getHotel() {
+    public ArrayList<Hotel> getHotels() {
         return new ArrayList<>(hotels);
     }
 

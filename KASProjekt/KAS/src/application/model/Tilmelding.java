@@ -95,4 +95,9 @@ public class Tilmelding {
 
     public void addUdlugt(Udflugt udflugt) {
     }
+
+    @Override
+    public String toString() {
+        return deltager.getName();
+    }
 }

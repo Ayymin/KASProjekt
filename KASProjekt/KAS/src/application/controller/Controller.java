@@ -135,14 +135,53 @@ public class Controller {
         konference.addUdflugt(udflugt);
     }
 
-    public static Udflugt createUdflugt(Konference konference, String name, String date, String adress, String description, int price) {
+    public static void createUdflugt(Konference konference, String name, String date, String adress, String description, int price) {
         Udflugt udflugt = new Udflugt(name, date, adress, description, price);
+        Storage.addKonferenceUdflugt(konference, udflugt);
         Storage.addUdflugt(udflugt);
-        return udflugt;
+
     }
 
     public static ArrayList<Konference> getKonferencer() {
         return Storage.getKonferencer();
+    }
+
+    public static ArrayList<Hotel> getKonferenceHotels(Konference konference) {
+        return Storage.getKonferenceHotels(konference);
+    }
+
+    public static ArrayList<Udflugt> getKonferenceUdflugter(Konference konference) {
+        return Storage.getKonferenceUdflugter(konference);
+    }
+
+    public static ArrayList<Tilmelding> getKonferenceDeltager(Konference konference) {
+        ArrayList<Tilmelding> konferenceDeltagers = new ArrayList<>();
+        for (Tilmelding aTilmelding: Storage.getKonferenceDeltager()) {
+            if (aTilmelding.getKonference().equals(konference)) {
+                konferenceDeltagers.add(aTilmelding);
+            }
+        }
+
+        return konferenceDeltagers;
+    }
+    public static ArrayList<Ledsager> getUdflugtDeltager(Udflugt udflugt) {
+        ArrayList<Ledsager> udflugtDeltagers = new ArrayList<>();
+        for (Ledsager aLedsager: Storage.getLedsagers()) {
+            if (aLedsager.getUdflugter().contains(udflugt)) {
+                udflugtDeltagers.add(aLedsager);
+            }
+        }
+        return udflugtDeltagers;
+    }
+    public static ArrayList<Tilmelding> getHotelBookings(Hotel hotel) {
+        ArrayList<Tilmelding> hotelBookings = new ArrayList<>();
+        for (Tilmelding aTilmelding: Storage.getTilmeldinger()) {
+            if (aTilmelding.getHotel() != null && aTilmelding.getHotel().equals(hotel)) {
+                hotelBookings.add(aTilmelding);
+            }
+        }
+
+        return hotelBookings;
     }
 }
 

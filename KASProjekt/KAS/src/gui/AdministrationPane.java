@@ -1,9 +1,7 @@
 package gui;
 
 import application.controller.Controller;
-import application.model.Hotel;
-import application.model.Konference;
-import application.model.Udflugt;
+import application.model.*;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -21,6 +19,8 @@ public class AdministrationPane extends GridPane {
     private ListView<Hotel> hotel;
     private TextArea udflugt1;
     private ListView<Udflugt> udflugt;
+
+    private ListView<String> deltagende;
 
     public AdministrationPane() {
         this.setPadding(new Insets(20));
@@ -44,37 +44,42 @@ public class AdministrationPane extends GridPane {
         this.add(lblHotel, 1, 3);
 
         hotel = new ListView<>();
-		/*this.add(hotel, 2,3);
+		this.add(hotel, 2,3);
 		hotel.setPrefWidth(250);
 		hotel.setPrefHeight(100);
-		hotel.getItems().setAll(Controller.getHotel());
 
-		/*ChangeListener<Hotel> hotelChangeListener = (ov, oldHotel, newHotel) -> this.selectedHotelChanged();
-		hotel.getSelectionModel().selectedItemProperty().addListener(hotelChangeListener);*/
+        deltagende = new ListView<>();
+        this.add(deltagende, 0, 5, 1, 3);
+        deltagende.setPrefWidth(250);
+        deltagende.setPrefHeight(200);
 
-        hotel1 = new TextArea();
+        //deltagende.getItems().setAll("aef" + "aef");
+		//ChangeListener<Hotel> hotelChangeListener = (ov, oldHotel, newHotel) -> this.selectedHotelChanged();
+		//hotel.getSelectionModel().selectedItemProperty().addListener(hotelChangeListener);
+
+        /*hotel1 = new TextArea();
         this.add(hotel1, 2, 3);
         hotel1.setPrefWidth(350);
         hotel1.setPrefHeight(100);
-        hotel1.setEditable(false);
+        hotel1.setEditable(false);*/
 
         Label lblUdflugt = new Label("Udflugt");
         this.add(lblUdflugt, 1, 7);
 
-        udflugt1 = new TextArea();
+        /*udflugt1 = new TextArea();
         this.add(udflugt1,2,7);
         udflugt1.setPrefWidth(300);
         udflugt1.setPrefHeight(100);
-        udflugt1.setEditable(false);
+        udflugt1.setEditable(false);*/
 
         udflugt = new ListView<>();
-		/*this.add(udflugt, 2, 7);
+		this.add(udflugt, 2, 7);
 		udflugt.setPrefWidth(300);
 		udflugt.setPrefHeight(100);
-		udflugt.getItems().setAll(Controller.getUdflugt());
 
-		/*ChangeListener<Udflugt> udflugtChangeListener = (ov, oldUdflugt, newUdflugt) -> this.selectedUdflugtChaned();
-		udflugt.getSelectionModel().selectedItemProperty().addListener(udflugtChangeListener);*/
+
+		//ChangeListener<Udflugt> udflugtChangeListener = (ov, oldUdflugt, newUdflugt) -> this.selectedUdflugtChaned();
+		//udflugt.getSelectionModel().selectedItemProperty().addListener(udflugtChangeListener);
 
         Label lblName = new Label("Konferencenavn");
         this.add(lblName, 1, 1);
@@ -158,15 +163,25 @@ public class AdministrationPane extends GridPane {
     }
 
     private void konferenceTilmeldinger() {
+        Konference konference = this.konference.getSelectionModel().getSelectedItem();
+        deltagende.getItems().setAll(String.valueOf(Controller.getKonferenceDeltager(konference)));
+
+
     }
     private void udflugtTilmeldinger() {
+        Udflugt udflugt = this.udflugt.getSelectionModel().getSelectedItem();
+        deltagende.getItems().setAll(String.valueOf(Controller.getUdflugtDeltager(udflugt)));
     }
     private void hotelTilmeldinger() {
+        Hotel hotel = this.hotel.getSelectionModel().getSelectedItem();
+        deltagende.getItems().setAll(String.valueOf(Controller.getHotelBookings(hotel)));
+
     }
 
 
     private void tilføjHotel() {
         Hotel hotel = this.hotel.getSelectionModel().getSelectedItem();
+        //Konference konference = this.konference.getSelectionModel().getSelectedItem();
         if (konference != null) {
 
             AdministrationWindow3 kw3 = new AdministrationWindow3("Tilføj hotel", hotel);
@@ -235,11 +250,13 @@ public class AdministrationPane extends GridPane {
         this.updateControls();
     }
 
-	/*private void selectedHotelChanged() {
+	private void selectedHotelChanged() {
 		this.updateControls();
 	}
 
-	private void selectedUdflugtChaned() {this.updateControls();}*/
+	private void selectedUdflugtChaned() {
+        this.updateControls();
+    }
 
 
     public void updateControls() {
@@ -249,18 +266,23 @@ public class AdministrationPane extends GridPane {
             txfStartDato.setText(konference.getDate());
             txfSlutDato.setText(konference.getEndDate());
             txfSted.setText(konference.getAdress());
+            hotel.getItems().setAll(Controller.getKonferenceHotels(konference));
+            udflugt.getItems().setAll(Controller.getKonferenceUdflugter(konference));
+
+
+
 
             StringBuilder sb = new StringBuilder();
-            for (Hotel h : konference.getHotel()) {
+            for (Hotel h : konference.getHotels()) {
                 sb.append(h + "\n");
             }
-            hotel1.setText(sb.toString());
+            //hotel1.setText(sb.toString());
 
             StringBuilder sb1 = new StringBuilder();
             for (Udflugt u : konference.getUdflugter()) {
                 sb1.append(u + "\n");
             }
-            udflugt1.setText(sb1.toString());
+            //udflugt1.setText(sb1.toString());
         } else {
             txfName.clear();
             txfStartDato.clear();
