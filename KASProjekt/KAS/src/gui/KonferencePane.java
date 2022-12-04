@@ -76,12 +76,6 @@ public class KonferencePane extends GridPane {
 
 
 
-        Button tilmeld = new Button("Tilmeld");
-        add(tilmeld, 5, 4);
-        GridPane.setMargin(tilmeld, new Insets(10, 10, 0, 10));
-        tilmeld.setOnAction(event -> createTilmelding());
-
-
         Button btnTilmeld = new Button("Tilmeld konference");
         hbxButtons1.getChildren().add(btnTilmeld);
         btnTilmeld.setOnAction(event -> this.tilmeldAction());
@@ -115,15 +109,8 @@ public class KonferencePane extends GridPane {
         txfDesc.setText(selectedKonference.getDescription());
     }
 
-    private void createTilmelding() {
-        try {
-
-            //Tilmelding tilmelding = new Tilmelding(txfAnkomst.getText(), );
-        } catch (Exception ex) {
-
-        }
 }
 
-}
+
 
 

@@ -77,7 +77,7 @@ public class AdministrationWindow4 extends Stage {
 
         konferenceComboBox = new ComboBox<>();
         pane.add(konferenceComboBox, 0, 5);
-        konferenceComboBox.getItems().addAll(Controller.getKonference());
+        konferenceComboBox.getItems().addAll(Controller.getKonferencer());
         konferenceComboBox.setDisable(true);
 
         Button btnCancel = new Button("Cancel");
@@ -94,18 +94,18 @@ public class AdministrationWindow4 extends Stage {
         pane.add(lblError, 0, 7);
         lblError.setStyle("-fx-text-fill: red");
 
-        initControls();
+        //initControls();
 
     }
 
-    private void initControls() {
+    /** private void initControls() {
         if (udflugt != null) {
             txfUdflugt.setText(udflugt.getName());
             txfDato.setText(udflugt.getDate());
             txfPris.setText("" + udflugt.getPrice());
-            if (udflugt.getKonferencer() != null) {
+            if (udflugt.getKonference() != null) {
                 konferenceCheckBox.setSelected(true);
-                konferenceComboBox.getSelectionModel().select(udflugt.getKonferencer());
+                konferenceComboBox.getSelectionModel().select(udflugt.getKonference());
             } else {
                 konferenceComboBox.getSelectionModel().select(0);
             }
@@ -115,7 +115,7 @@ public class AdministrationWindow4 extends Stage {
             //txfPris.clear();
             konferenceComboBox.getSelectionModel().select(0);
         }
-    }
+    } **/
 
     // -------------------------------------------------------------------------
 
@@ -126,7 +126,7 @@ public class AdministrationWindow4 extends Stage {
     private void okAction() {
         String name = txfUdflugt.getText().trim();
         String dato = txfDato.getText().trim();
-        double pris = -1;
+        int pris = -1;
 
         if (name.length() == 0) {
             lblError.setText("Indtast udflugtnavn");
@@ -135,7 +135,7 @@ public class AdministrationWindow4 extends Stage {
                 lblError.setText("Indtast dato");
             } else {
                 try {
-                    pris = Double.parseDouble(txfPris.getText().trim());
+                    pris = Integer.parseInt(txfPris.getText().trim());
                 } catch (NumberFormatException ex) {
                 }
                 if (pris < 0) {
@@ -154,9 +154,9 @@ public class AdministrationWindow4 extends Stage {
                             }
                         } else {
                             if (konferenceIsSelected) {
-                                Controller.createUdflugt(newKonference, name, date, adress, description, price);
+                                Controller.createUdflugt(newKonference, name, dato, adress, description, pris);
                             } else {
-                                Controller.createUdflugt(newKonference, name, date, adress, description, price);
+                                Controller.createUdflugt(newKonference, name, dato, adress, description, pris);
                                 Controller.updateKonference(konference, name, startDato, slutDato, sted);
                             }
                         }

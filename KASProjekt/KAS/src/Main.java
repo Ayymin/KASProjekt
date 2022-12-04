@@ -22,9 +22,7 @@ public class Main {
         Udflugt egeskov = new Udflugt("Egeskov", "19-05-2022", "Odense", "Vi skal ud og se på Egetræer", 75);
         Udflugt trapholdtMuseumKolding = new Udflugt("Trapholt Museum Kolding", "20-05-2022", "Æblehaven 23, Kolding", "Vi skal se på modern kunst", 200);
 
-        konference.addUdflugt(byrundtur);
-        konference.addUdflugt(egeskov);
-        konference.addUdflugt(trapholdtMuseumKolding);
+
 
         Service denHvideSvaneWifi = new Service("Wifi", 50);
         Service hoetelPhoenixWifi = new Service("Wifi", 75);

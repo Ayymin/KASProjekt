@@ -19,10 +19,12 @@ public class Storage {
     private static ArrayList<Konference> konferencer = new ArrayList<>();
 
 
+
     public static void initContent() {
         konference = new Konference("Milijøkonferencen", "20-05-2022"
                 , "Odense Universitet", "Hav og Himmel",
                 "Konference om Hav og Himmel", "18-05-2022", 1500);
+
 
         Hotel denHvideSvane = new Hotel("Den Hvide Svane", 1250, 1050);
         Hotel hoetelPhoenix = new Hotel("Hotel Phønix", 800, 700);
@@ -67,6 +69,18 @@ public class Storage {
         Tilmelding nielsPetersenTilmelding = new Tilmelding("18-05-2022", konference, "20-05-2022", nielsPetersen);
         nielsPetersenTilmelding.setHotel(denHvideSvane);
 
+        konference.addHotel(denHvideSvane);
+        konference.addHotel(hoetelPhoenix);
+        konference.addHotel(pensionTusindfryd);
+
+        ledsagers.add(mieSommer);
+        ledsagers.add(janMadsen);
+
+        konference.addUdflugt(byrundtur);
+        konference.addUdflugt(egeskov);
+        konference.addUdflugt(trapholdtMuseumKolding);
+
+        konferencer.add(konference);
 
         tilmeldinger.add(finnMadsenTilmelding);
         tilmeldinger.add(nielsPetersenTilmelding);
@@ -136,7 +150,29 @@ public class Storage {
     }
 
     public static ArrayList<Konference> getKonferencer() {
-        return new ArrayList<Konference>(konferencer);
+        return konferencer;
+    }
+
+    public static ArrayList<Hotel> getKonferenceHotels(Konference konference) {
+        return konference.getHotels();
+    }
+
+    public static ArrayList<Udflugt> getKonferenceUdflugter(Konference konference) {
+        return konference.getUdflugter();
+    }
+
+    public static ArrayList<Tilmelding> getKonferenceDeltager() {
+        return tilmeldinger;
+    }
+    public static ArrayList<Tilmelding> getUdflugtDeltager(Udflugt udflugt) {
+        return udflugt.getTilmelidnger();
+    }
+    public static ArrayList<Deltager> getHotelBookings(Hotel hotel) {
+        return Storage.getHotelBookings(hotel);
+    }
+
+    public static void addKonferenceUdflugt(Konference konference, Udflugt udflugt) {
+        konference.addUdflugt(udflugt);
     }
 
 }

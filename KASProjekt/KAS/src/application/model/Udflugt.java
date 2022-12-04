@@ -72,18 +72,19 @@ public class Udflugt {
         this.tilmelidnger = tilmelidnger;
     }
 
-    public Konference getKonference() {
-        return konference;
-    }
-
 
     public Tilmelding getTilmelding() {
         return tilmelding;
     }
-
+    
     @Override
     public String toString() {
         return name + " (" + date + ") (" + price + " kr)";
+    }
+
+
+    public Konference getKonference() {
+        return this.konference;
     }
 
 }

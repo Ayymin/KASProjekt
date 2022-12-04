@@ -8,10 +8,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.skin.LabeledSkinBase;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import application.model.Number;
+
 
 public class AdministrationWindow extends Stage {
     private Konference konference;
@@ -40,7 +43,7 @@ public class AdministrationWindow extends Stage {
 
     // -------------------------------------------------------------------------
 
-    private TextField txfName, txfStartDato, txfSlutDato, txfSted;
+    private TextField txfName, txfStartDato, txfSlutDato, txfSted, txfTopic, txfDescription, txfPriceADay;
     private Label lblError;
 
     private void initContent(GridPane pane) {
@@ -74,18 +77,37 @@ public class AdministrationWindow extends Stage {
         txfSted = new TextField();
         pane.add(txfSted, 0, 7);
 
+        Label lblTopic = new Label("Emne");
+        pane.add(lblTopic, 0, 8);
+
+        txfTopic = new TextField();
+        pane.add(txfTopic, 0, 9);
+
+        txfDescription = new TextField();
+        txfPriceADay = new TextField();
+        pane.add(txfDescription, 0, 11);
+        pane.add(txfPriceADay, 0, 13);
+
+        Label lblDescription = new Label("Beskrivelse");
+        Label lblPriceADay = new Label("Pris pr dag");
+        pane.add(lblDescription, 0, 10);
+        pane.add(lblPriceADay, 0, 12);
+
+
+
+
         Button btnCancel = new Button("Cancel");
-        pane.add(btnCancel, 0, 8);
+        pane.add(btnCancel, 0, 14);
         GridPane.setHalignment(btnCancel, HPos.LEFT);
         btnCancel.setOnAction(event -> this.cancelAction());
 
         Button btnOK = new Button("OK");
-        pane.add(btnOK, 0, 8);
+        pane.add(btnOK, 0, 14);
         GridPane.setHalignment(btnOK, HPos.RIGHT);
         btnOK.setOnAction(event -> this.okAction());
 
         lblError = new Label();
-        pane.add(lblError, 0, 9);
+        pane.add(lblError, 0, 15);
         lblError.setStyle("-fx-text-fill: red");
 
         this.initControls();
@@ -97,11 +119,18 @@ public class AdministrationWindow extends Stage {
             txfStartDato.setText(konference.getDate());
             txfSlutDato.setText(konference.getEndDate());
             txfSted.setText(konference.getAdress());
+            txfDescription.setText(konference.getDescription());
+            txfTopic.setText(konference.getTopic());
+            txfPriceADay.setText(String.valueOf(konference.getPriceADay()));
+
         } else {
             txfName.clear();
             txfStartDato.clear();
             txfSlutDato.clear();
             txfSted.clear();
+            txfDescription.clear();
+            txfPriceADay.clear();
+            txfTopic.clear();
         }
     }
 
@@ -112,12 +141,44 @@ public class AdministrationWindow extends Stage {
     }
 
     private void okAction() {
+
+
         String name = txfName.getText().trim();
         String startDato = txfStartDato.getText().trim();
         String slutDato = txfSlutDato.getText().trim();
         String sted = txfSted.getText().trim();
+        String priceADay = txfPriceADay.getText().trim();
+        String description = txfDescription.getText().trim();
+        String topic = txfTopic.getText().trim();
 
-        if (name.length() == 0) {
+
+        if (!Number.isANumber(priceADay)) {
+            lblError.setText("Indtast pris");
+        } else if (description.length() == 0) {
+            lblError.setText("Indtast beskrivelse");
+        } else if (topic.length() == 0) {
+            lblError.setText("Indtast emne");
+        } else if (name.length() == 0) {
+            lblError.setText("Indtast navn");
+        } else if (startDato.length() == 0) {
+            lblError.setText("Indtast startdato");
+        } else if (sted.length() == 0) {
+            lblError.setText("Indtast sted");
+        } else if (slutDato.length() == 0){
+            lblError.setText("Indtast slutdato");
+        } else if (konference != null){
+            Controller.updateKonference(konference, name, startDato, slutDato, sted);
+            this.hide();
+        } else {
+            Controller.createKonference(name, slutDato, sted, topic, description, startDato, Double.parseDouble(priceADay));
+            this.hide();
+        }
+
+
+
+
+
+        /*if (name.length() == 0) {
             lblError.setText("Indtast navn");
         } else {
             if (startDato.length() == 0) {
@@ -139,7 +200,7 @@ public class AdministrationWindow extends Stage {
                     }
                 }
             }
-        }
+        }*/
     }
 }
 

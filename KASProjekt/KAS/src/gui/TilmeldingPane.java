@@ -21,7 +21,7 @@ import java.awt.*;
 import java.util.Optional;
 
 public class TilmeldingPane extends GridPane {
-    private final String[] labels = {"Deltagernavn:", "Adresse:", "By/Land:", "Ankomstdato:", "Firmanavn:", "Tlf.nr:", "Afrejsedato:", "Firma tlf.nr:"};
+    private final String[] labels = {"Deltagernavn:", "Adresse:", "By:", "Ankomstdato:", "Tlf.nr:", "Afrejsedato:", "Firma tlf.nr:", "Land"};
     private final String[] svar = {"Ja", "Nej"};
 
     private TextField txfAnkomst = new TextField();
@@ -66,6 +66,9 @@ public class TilmeldingPane extends GridPane {
         Label lblSpeaker = new Label("Foredragsholder: ");
         this.add(lblSpeaker, 0, 4);
         this.add(cbSpeaker,1,4);
+
+        Label lbLand = new Label("Land");
+        this.add(lbLand,2,3);
     }
 
     private void initContent(GridPane pane) {

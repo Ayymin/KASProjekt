@@ -6,9 +6,13 @@ public class Ledsager extends Person {
 
     ArrayList<Udflugt> udflugter = new ArrayList<>();
 
+    private String name;
+
+
     public Ledsager(String name, String adress, int phoneNr, String city, String country){
         super(name, adress, phoneNr, city, country);
 
+        this.name = name;
     }
 
     public void addUdflugt(Udflugt udflugt) {
@@ -19,7 +23,9 @@ public class Ledsager extends Person {
         return udflugter;
     }
 
-
+    public String toString() {
+        return name;
+    }
 
 
 
