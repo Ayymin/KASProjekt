@@ -23,16 +23,17 @@ public class KonferenceWindow extends Stage {
     private TextField txfFirma = new TextField();
     private TextField txfTlfNr = new TextField();
     private TextField txfAfrejse = new TextField();
-    private TextField txfFirmaTlfNr = new TextField();
-
     private TextField txfBy = new TextField();
     private TextField txfLand = new TextField();
+    private TextField txfFirmaTlfNr = new TextField();
 
+    //Label
     private Label lblError = new Label();
 
     //Checkbox
     private CheckBox cbSpeaker = new CheckBox();
 
+    //Den valgte konference
     private Konference selectedKonference;
 
 
@@ -127,7 +128,27 @@ public class KonferenceWindow extends Stage {
 
         if (fejlBesked != null) {
             lblError.setText(fejlBesked);
-            return;
+        } else {
+            String deltagerNavn = txfName.getText().trim();
+            String adresse = txfAdress.getText().trim();
+            String by = txfBy.getText().trim();
+            String land = txfLand.getText().trim();
+            String ankomstDato = txfAnkomst.getText().trim();
+            String afrejseDato = txfAfrejse.getText().trim();
+            String firma = txfFirma.getText().trim();
+
+            int tlfNr = Integer.parseInt(txfTlfNr.getText().trim());
+            int firmaTlf = Integer.parseInt(txfFirmaTlfNr.getText().trim());
+
+            boolean isSpeaker = cbSpeaker.isSelected();
+
+
+            Deltager deltager = new Deltager(deltagerNavn, adresse, tlfNr, by, land, isSpeaker, firma, firmaTlf);
+            Tilmelding tilmelding = new Tilmelding(ankomstDato, selectedKonference, afrejseDato, deltager);
+
+            Controller.addDeltager(deltager);
+            Controller.addTilmelding(tilmelding);
+            this.hide();
         }
     }
 

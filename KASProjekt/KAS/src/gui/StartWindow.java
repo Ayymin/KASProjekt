@@ -11,12 +11,11 @@ import javafx.stage.Stage;
 
 public class StartWindow extends Application {
 
-
-        @Override
-        public void start(Stage stage) {
-            stage.setTitle("Arcitecture Demo");
-            BorderPane pane = new BorderPane();
-            this.initContent(pane);
+    @Override
+    public void start(Stage stage) {
+        stage.setTitle("Arcitecture Demo");
+        BorderPane pane = new BorderPane();
+        this.initContent(pane);
 
         Scene scene = new Scene(pane);
         stage.setScene(scene);

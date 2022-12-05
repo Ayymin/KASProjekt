@@ -33,6 +33,7 @@ public class UdflugtPane extends GridPane {
         this.setVgap(10);
         this.setMinSize(125, 50);
         this.setGridLinesVisible(false);
+        this.setAlignment(Pos.CENTER);
 
 
         Label lbludflugt = new Label("Udflugter");

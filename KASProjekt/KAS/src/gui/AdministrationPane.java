@@ -29,6 +29,7 @@ public class AdministrationPane extends GridPane {
         this.setHgap(20);
         this.setVgap(10);
         this.setGridLinesVisible(false);
+        this.setAlignment(Pos.CENTER);
 
         Label lblComp = new Label("Konferencer");
         this.add(lblComp, 0, 0);

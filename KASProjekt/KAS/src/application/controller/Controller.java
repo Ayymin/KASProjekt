@@ -165,7 +165,6 @@ public class Controller {
                 konferenceDeltagers.add(aTilmelding);
             }
         }
-
         return konferenceDeltagers;
     }
     public static ArrayList<Ledsager> getUdflugtDeltager(Udflugt udflugt) {

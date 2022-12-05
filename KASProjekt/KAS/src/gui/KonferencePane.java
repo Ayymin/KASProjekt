@@ -2,6 +2,7 @@ package gui;
 
 import application.controller.Controller;
 import application.model.Konference;
+import application.model.Tilmelding;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
@@ -13,6 +14,8 @@ import javafx.scene.layout.GridPane;
 import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
 
+
+import java.util.Optional;
 
 public class KonferencePane extends GridPane {
 
@@ -29,6 +32,7 @@ public class KonferencePane extends GridPane {
         this.setHgap(20);
         this.setVgap(10);
         this.setGridLinesVisible(false);
+        this.setAlignment(Pos.CENTER);
 
         //------------------------------ Gui Hell ------------------------------------
 
@@ -71,9 +75,6 @@ public class KonferencePane extends GridPane {
         hbxButtons1.setPadding(new Insets(10, 0, 0, 0));
         hbxButtons1.setAlignment(Pos.BASELINE_RIGHT);
 
-
-
-        Button btnTilmeld = new Button("Tilmeld konference");
         hbxButtons1.getChildren().add(btnTilmeld);
         hbxButtons1.getChildren().add(btnPris);
         btnTilmeld.setDisable(true);
@@ -96,15 +97,64 @@ public class KonferencePane extends GridPane {
         window.showAndWait();
     }
 
-    private void selectedKonferenceChanged() {                                                  //Prints out information regarding a selected Conference.
-        Konference selectedKonference = lvwKonferencer.getSelectionModel().getSelectedItem();
-        txfName.setText(selectedKonference.getName());
-        txfTopic.setText(selectedKonference.getTopic());
-        txfDate.setText(selectedKonference.getDate());
-        txfendDate.setText(selectedKonference.getEndDate());
-        txfDesc.setText(selectedKonference.getDescription());
+    private void selectedKonferenceChanged() {
+        if (lvwKonferencer.getSelectionModel().getSelectedItem() != null) {
+            btnTilmeld.setDisable(false);
+            Konference selectedKonference = lvwKonferencer.getSelectionModel().getSelectedItem();
+            txfName.setText(selectedKonference.getName());
+            txfTopic.setText(selectedKonference.getTopic());
+            txfDate.setText(selectedKonference.getDate());
+            txfendDate.setText(selectedKonference.getEndDate());
+            txfDesc.setText(selectedKonference.getDescription());
+        }
     }
 
+
+    public void samletPrisAction() {
+        Dialog<String> dialog = new TextInputDialog();
+        dialog.setTitle("Indtast dit navn");
+        dialog.setHeaderText("Indtast dit navn for at se samlet pris");
+
+        Optional<String> result = dialog.showAndWait();
+
+        // wait for the modal dialog to close
+
+        String input = "";
+        boolean nameFound = false;
+        if (result.isPresent()) {
+            input = result.get();
+            if (input.length() > 0) {
+                //Løber gennem alle tilmeldinger
+                for (Tilmelding aTilmelding : Controller.getTilmeldinger()) {
+                    //Tjekker om en tilmelding indeholder en deltager med det indtastede navn
+                    if (aTilmelding.getDeltager().getName().equalsIgnoreCase(input)) {
+                        nameFound = true;
+
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Samlet pris");
+                        alert.setHeaderText("Den samlede pris");
+                        alert.setContentText("Den samlede pris er " + aTilmelding.getTotalPrice());
+                        alert.show();
+
+                    }
+                }
+
+                if (!nameFound) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Book hotel");
+                    alert.setHeaderText("Forkert navn");
+                    alert.setContentText("Skriv navnet på personen i tilmeldingen");
+                    alert.show();
+                }
+            }
+        }
+    }
+
+    public void updateControls() {
+        if (Controller.getKonferencer() != null) {
+            lvwKonferencer.getItems().setAll(Controller.getKonferencer());
+        }
+    }
 }
 
 
