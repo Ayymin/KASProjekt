@@ -9,8 +9,6 @@ import javafx.scene.control.TabPane.TabClosingPolicy;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-
-
 public class StartWindow extends Application {
 
 
@@ -20,46 +18,47 @@ public class StartWindow extends Application {
             BorderPane pane = new BorderPane();
             this.initContent(pane);
 
-            Scene scene = new Scene(pane);
-            stage.setScene(scene);
-            stage.show();
-        }
+        Scene scene = new Scene(pane);
+        stage.setScene(scene);
+        stage.show();
+    }
 
-        // -------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
 
-        private void initContent(BorderPane pane) {
-            TabPane tabPane = new TabPane();
-            this.initTabPane(tabPane);
-            pane.setCenter(tabPane);
-        }
+    private void initContent(BorderPane pane) {
+        TabPane tabPane = new TabPane();
+        this.initTabPane(tabPane);
+        pane.setCenter(tabPane);
+    }
 
-        private void initTabPane(TabPane tabPane) {
-            tabPane.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
+    private void initTabPane(TabPane tabPane) {
+        tabPane.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
 
-            Tab tabKonference = new Tab("Konference");
-            tabPane.getTabs().add(tabKonference);
+        Tab tabKonference = new Tab("Konference");
+        tabPane.getTabs().add(tabKonference);
 
-            KonferencePane konferencePane = new KonferencePane();
-            tabKonference.setContent(konferencePane);
+        KonferencePane konferencePane = new KonferencePane();
+        tabKonference.setContent(konferencePane);
+        tabKonference.setOnSelectionChanged(event -> konferencePane.updateControls());
 
-            Tab tabBookHotel = new Tab("Book Hotel");
-            tabPane.getTabs().add(tabBookHotel);
+        Tab tabBookHotel = new Tab("Book Hotel");
+        tabPane.getTabs().add(tabBookHotel);
 
-            HotelPane hotelPane = new HotelPane();
-            tabBookHotel.setContent(hotelPane);
+        HotelPane hotelPane = new HotelPane();
+        tabBookHotel.setContent(hotelPane);
 
-            Tab tabTilføjLedsager = new Tab("Tilmeld Udflugt");
-            tabPane.getTabs().add(tabTilføjLedsager);
+        Tab tabTilføjLedsager = new Tab("Tilmeld Udflugt");
+        tabPane.getTabs().add(tabTilføjLedsager);
 
-            UdflugtPane ledsagerPane = new UdflugtPane();
-            tabTilføjLedsager.setContent(ledsagerPane);
+        UdflugtPane ledsagerPane = new UdflugtPane();
+        tabTilføjLedsager.setContent(ledsagerPane);
 
-            Tab tabAdministration = new Tab("Administration");
-            tabPane.getTabs().add(tabAdministration);
+        Tab tabAdministration = new Tab("Administration");
+        tabPane.getTabs().add(tabAdministration);
 
-            AdministrationPane ap = new AdministrationPane();
-            tabAdministration.setContent(ap);
+        AdministrationPane ap = new AdministrationPane();
+        tabAdministration.setContent(ap);
 
 
-        }
+    }
 }

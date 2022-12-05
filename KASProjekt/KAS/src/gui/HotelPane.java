@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public class HotelPane extends GridPane {
-    private final CheckboxGroup cbHotelGroup = new CheckboxGroup();
     private ArrayList<CheckBox> chbHotels = new ArrayList<>();
     private ArrayList<CheckBox> chbHotelsData = new ArrayList<>();
 

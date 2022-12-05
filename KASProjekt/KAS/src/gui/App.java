@@ -7,6 +7,5 @@ public class App {
     public static void main(String[] args) {
         Storage.initContent();
         Application.launch(StartWindow.class);
-
     }
 }

@@ -94,28 +94,8 @@ public class AdministrationWindow4 extends Stage {
         pane.add(lblError, 0, 7);
         lblError.setStyle("-fx-text-fill: red");
 
-        //initControls();
-
     }
 
-    /** private void initControls() {
-        if (udflugt != null) {
-            txfUdflugt.setText(udflugt.getName());
-            txfDato.setText(udflugt.getDate());
-            txfPris.setText("" + udflugt.getPrice());
-            if (udflugt.getKonference() != null) {
-                konferenceCheckBox.setSelected(true);
-                konferenceComboBox.getSelectionModel().select(udflugt.getKonference());
-            } else {
-                konferenceComboBox.getSelectionModel().select(0);
-            }
-        } else {
-            txfUdflugt.clear();
-            txfDato.clear();
-            txfPris.clear();
-            konferenceComboBox.getSelectionModel().select(0);
-        }
-    } **/
 
     // -------------------------------------------------------------------------
 
@@ -168,7 +148,8 @@ public class AdministrationWindow4 extends Stage {
         }
     }
 
-    private void selectedKonferenceChanged(boolean checked) {konferenceComboBox.setDisable(!checked);
+    private void selectedKonferenceChanged(boolean checked) {
+        konferenceComboBox.setDisable(!checked);
     }
 
 }

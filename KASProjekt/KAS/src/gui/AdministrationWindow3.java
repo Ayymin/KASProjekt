@@ -171,7 +171,8 @@ public class AdministrationWindow3 extends Stage {
     }
 
 
-    private void selectedKonferenceChanged(boolean checked) {konferenceComboBox.setDisable(!checked);
+    private void selectedKonferenceChanged(boolean checked) {
+        konferenceComboBox.setDisable(!checked);
     }
 
 }

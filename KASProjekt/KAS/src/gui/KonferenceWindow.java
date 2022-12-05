@@ -1,6 +1,9 @@
 package gui;
 
+import application.controller.Controller;
 import application.model.Konference;
+import application.model.Deltager;
+import application.model.Tilmelding;
 import javafx.geometry.HPos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -42,8 +45,6 @@ public class KonferenceWindow extends Stage {
         this.setScene(scene);
         this.setResizable(false);
     }
-
-
 
     private void initContent(GridPane pane) {
         pane.setVgap(10);

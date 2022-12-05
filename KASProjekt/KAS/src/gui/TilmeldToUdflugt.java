@@ -20,8 +20,6 @@ import storage.Storage;
 
 public class TilmeldToUdflugt extends Stage {
 
-    private Label lblError;
-
     private Udflugt udflugt;
 
     private Ledsager ledsager;

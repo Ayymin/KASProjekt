@@ -11,7 +11,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+
 import java.util.Optional;
+
 import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
 
@@ -25,20 +27,19 @@ public class UdflugtPane extends GridPane {
     private ListView<Udflugt> lvwUdflugter = new ListView<>();
 
 
-
     public UdflugtPane() {
         this.setPadding(new Insets(20));
         this.setHgap(20);
         this.setVgap(10);
-        this.setMinSize(125,50);
+        this.setMinSize(125, 50);
         this.setGridLinesVisible(false);
 
 
         Label lbludflugt = new Label("Udflugter");
-        this.add(lbludflugt,0,0);
+        this.add(lbludflugt, 0, 0);
 
 
-        this.add(lvwUdflugter,0,1,1,5);
+        this.add(lvwUdflugter, 0, 1, 1, 5);
         lvwUdflugter.setPrefWidth(200);
         lvwUdflugter.setPrefHeight(200);
         lvwUdflugter.getItems().setAll(Controller.getUdflugter());
@@ -49,39 +50,39 @@ public class UdflugtPane extends GridPane {
 
 
         Label lblName = new Label("Name:");
-        this.add(lblName, 1,1);
+        this.add(lblName, 1, 1);
 
         txfName = new TextField();
-        this.add(txfName,2,1);
+        this.add(txfName, 2, 1);
         txfName.setPrefWidth(200);
         txfName.setEditable(false);
 
         Label lblDescription = new Label("Description");
-        this.add(lblDescription,1,5);
+        this.add(lblDescription, 1, 5);
 
         txfDescription = new TextField();
-        this.add(txfDescription,2,5);
+        this.add(txfDescription, 2, 5);
         txfDescription.setEditable(false);
 
         Label lblAdresse = new Label("Adresse");
-        this.add(lblAdresse,1,4);
+        this.add(lblAdresse, 1, 4);
 
         txfAdresse = new TextField();
-        this.add(txfAdresse,2,4);
+        this.add(txfAdresse, 2, 4);
         txfAdresse.setEditable(false);
 
         Label lblDato = new Label("Dato");
-        this.add(lblDato,1,3);
+        this.add(lblDato, 1, 3);
 
         txfDato = new TextField();
-        this.add(txfDato,2,3);
+        this.add(txfDato, 2, 3);
         txfDato.setEditable(false);
 
         Label lblPrice = new Label("Price");
-        this.add(lblPrice,1,2);
+        this.add(lblPrice, 1, 2);
 
         txfPrice = new TextField();
-        this.add(txfPrice,2,2);
+        this.add(txfPrice, 2, 2);
         txfPrice.setEditable(false);
 
 
@@ -110,9 +111,9 @@ public class UdflugtPane extends GridPane {
         this.updateControls();
     }
 
-    public void updateControls(){
+    public void updateControls() {
         Udflugt udflugter = lvwUdflugter.getSelectionModel().getSelectedItem();
-        if(udflugter != null){
+        if (udflugter != null) {
             txfName.setText(udflugter.getName());
             txfDescription.setText(udflugter.getDescription());
             txfAdresse.setText(udflugter.getAdress());

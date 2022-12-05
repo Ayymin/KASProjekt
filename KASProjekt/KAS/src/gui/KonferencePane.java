@@ -16,7 +16,7 @@ import javafx.scene.layout.HBox;
 
 public class KonferencePane extends GridPane {
 
-    private TextField txfName, txfDesc, txfDate, txfendDate,txfTopic;
+    private TextField txfName, txfDesc, txfDate, txfendDate, txfTopic;
 
     private Button btnTilmeld = new Button("Tilmeld konference");
 
@@ -54,10 +54,10 @@ public class KonferencePane extends GridPane {
         this.add(lbendDate, 2, 3);
 
         txfTopic = new TextField();
-        this.add(txfTopic,3,4);
+        this.add(txfTopic, 3, 4);
 
         Label lbTopic = new Label("Topic:");
-        this.add(lbTopic,2,4);
+        this.add(lbTopic, 2, 4);
 
         txfDesc = new TextField();
         this.add(txfDesc, 3, 5);
@@ -67,8 +67,8 @@ public class KonferencePane extends GridPane {
         this.add(lbDesc, 2, 5);
 
         HBox hbxButtons1 = new HBox(10);
-        this.add(hbxButtons1,0,6,3,1);
-        hbxButtons1.setPadding(new Insets(10,0,0,0));
+        this.add(hbxButtons1, 0, 6, 3, 1);
+        hbxButtons1.setPadding(new Insets(10, 0, 0, 0));
         hbxButtons1.setAlignment(Pos.BASELINE_RIGHT);
 
 
@@ -83,8 +83,12 @@ public class KonferencePane extends GridPane {
         lvwKonferencer.setPrefSize(250, 100);
         lvwKonferencer.getItems().setAll(Controller.getKonference());
 
-        ChangeListener<Konference> listener = (ov, o, n) -> this.selectedKonferenceChanged();
-        lvwKonferencer.getSelectionModel().selectedItemProperty().addListener(listener);
+
+        //------------------------------ Gui Hell ends ------------------------------------
+
+        btnTilmeld.setOnAction(event -> this.tilmeldAction());
+        btnPris.setOnAction(actionEvent -> this.samletPrisAction());
+        lvwKonferencer.getSelectionModel().selectedItemProperty().addListener((ov, o, n) -> this.selectedKonferenceChanged());
     }
 
     private void tilmeldAction() {
